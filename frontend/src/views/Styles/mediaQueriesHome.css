@@ -1,0 +1,56 @@
+@media (max-width: 1199px) {
+  .mainImage {
+    max-width: 930px;
+  }
+}
+
+@media (max-width: 991px) {
+  .mainImage {
+    max-width: 690px;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainImage {
+    max-width: 510px;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainImage {
+    max-width: 510px;
+  }
+}
+
+@media (max-width: 575px) {
+  .mainImage {
+    width: 575;
+    max-width: 575px;
+  }
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 414px) {
+  .mainImage {
+    width: 414px;
+    max-width: 414px;
+  }
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .mainImage {
+    width: 320px;
+    max-width: 320px;
+  }
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+}

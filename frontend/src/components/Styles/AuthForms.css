@@ -1,0 +1,136 @@
+.row {
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  /* height: 100vh; */
+}
+
+input,
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+form {
+  display: block;
+  position: relative;
+}
+
+form .form-inner {
+  position: relative;
+  display: block;
+  background-color: #161a2b;
+  padding: 30px;
+  z-index: 1;
+  border-radius: 25px;
+}
+
+form .form-inner h2 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+form .form-inner .form-group {
+  display: block;
+  width: 400px;
+  margin-bottom: 15px;
+}
+
+.form-inner .form-group label {
+  display: block;
+  color: #fff;
+  font-size: 12px;
+  margin-bottom: 5px;
+  transition: 0.4s;
+}
+
+.form-inner .form-group:focus-within label {
+  color: rgb(40, 216, 178);
+}
+
+form .form-inner .form-group input {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  transition: 0.4s;
+}
+
+form .form-inner .form-group input:focus {
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+form .form-inner input[type="submit"] {
+  display: inline;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    to left,
+    rgb(40, 216, 178) 25%,
+    rgb(0, 190, 201)
+  );
+  width: 100px;
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+form .form-inner input[type="submit"]:hover {
+  background-position: 100% 0%;
+}
+
+form .form-inner input[type="button"] {
+  display: inline;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    to left,
+    rgb(40, 216, 178) 25%,
+    rgb(0, 190, 201)
+  );
+  width: 100px;
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.botonIzq {
+  text-align: left;
+  padding: 0;
+}
+
+.botonDer {
+  text-align: right;
+  padding: 0;
+}
+
+form .form-inner input[type="button"]:hover {
+  background-position: 100% 0%;
+}
+
+@media (max-width: 500px) {
+  form .form-inner .form-group {
+    display: block;
+    width: 290px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 350px) {
+  form .form-inner .form-group {
+    display: block;
+    width: 200px;
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,85 @@
+<template>
+  <div>
+    <AsideNavbar @method="changeOpacity" />
+    <div v-if="opacity" class="blinder"></div>
+    <NavBar class="sticky-top" />
+    <div class="container">
+      <div class="searcher-wallpaper row">
+        <div class="col mainSearcher">
+          <form class="my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="¿Adónde?"
+              aria-label="Search"
+              v-model="findByCity"
+            />
+          </form>
+        </div>
+      </div>
+      <Places :places="places" :findByCity="findByCity" />
+      <Restaurants :restaurants="restaurants" :findByCity="findByCity" />
+      <Hotels :hotels="hotels" :findByCity="findByCity" />
+    </div>
+  </div>
+</template>
+<script>
+import AsideNavbar from "@/components/AsideNavbar";
+import NavBar from "@/components/NavBar";
+import Places from "@/components/Home/Places";
+import Restaurants from "@/components/Home/Restaurants";
+import Hotels from "@/components/Home/Hotels";
+import { mapState } from "vuex";
+export default {
+  name: "Introduction",
+  components: {
+    AsideNavbar,
+    NavBar,
+    Places,
+    Hotels,
+    Restaurants,
+  },
+  data() {
+    return {
+      opacity: false,
+      findByCity: "",
+    };
+  },
+  mounted() {
+    this.$store.dispatch("loadProducts");
+  },
+  methods: {
+    changeOpacity() {
+      this.opacity = !this.opacity;
+    },
+  },
+  computed: {
+    ...mapState(["places"]),
+    ...mapState(["restaurants"]),
+    ...mapState(["hotels"]),
+  },
+};
+</script>
+<style scoped>
+@import "./Styles/mediaQueriesHome.css";
+
+.blinder {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  position: absolute;
+  z-index: 2;
+  opacity: 0.4;
+  top: 0;
+}
+
+.mainSearcher {
+  margin: 14.8% 20%;
+}
+
+.searcher-wallpaper {
+  background-image: url("../assets/colombia.jpg");
+  background-size: cover;
+  height: 40vh;
+}
+</style>
