@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 import axios from "axios";
 
 export default createStore({
@@ -25,7 +25,7 @@ export default createStore({
     },
     setProductType(state, productType) {
       state.productType = productType;
-    }
+    },
   },
   getters: {},
   actions: {
@@ -33,20 +33,22 @@ export default createStore({
       setTimeout(() => {
         axios
           .get(`${process.env.VUE_APP_BACKEND_URL}/home/touristic_places`)
-          .then((res) => commit('setPlaces', res.data));
+          .then((res) => commit("setPlaces", res.data))
+          .catch((error) => log.error(error));
       }, 1000);
       setTimeout(() => {
         axios
           .get(`${process.env.VUE_APP_BACKEND_URL}/home/hotels`)
-          .then((res) => commit('setHotels', res.data));
+          .then((res) => commit("setHotels", res.data))
+          .catch((error) => log.error(error));
       }, 1000);
       setTimeout(() => {
         axios
           .get(`${process.env.VUE_APP_BACKEND_URL}/home/restaurants`)
-          .then((res) => commit('setRestaurants', res.data));
+          .then((res) => commit("setRestaurants", res.data))
+          .catch((error) => log.error(error));
       }, 1000);
     },
   },
-  modules: {
-  }
-})
+  modules: {},
+});
