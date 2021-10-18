@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  nodeserver:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+  nginx:
+    restart: always
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - DATABASE_HOST=${DATABASE_HOST}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
