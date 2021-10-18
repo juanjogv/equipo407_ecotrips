@@ -1,5 +1,7 @@
 # equipo3xx_ecotrips
 
+Ecotrips is a web application creatted to promote ecotourism in Colombia, offering recommendations of tourist sites along with accommodations and restaurants.
+
 This project was developed under the initiative of the IPP (Integrating Pedagogical Project). Initiative proposed by the Politécnico Colombiano Jaime Isaza Cadavid.
 
 # Getting Started
