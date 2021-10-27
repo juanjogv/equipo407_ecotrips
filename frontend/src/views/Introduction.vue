@@ -52,8 +52,15 @@
           />
         </div>
       </div>
-      <div class="row objetiveSection">
-        <div class="col-sm-12" style="text-align: center;">
+      <div class="objetiveSection">
+        <div style="text-align: center">
+          <img
+            style="opacity:0.9;"
+            src="../assets/img/introduction/cano-cristal.jpg"
+            class="img-fluid"
+          />
+        </div>
+        <div style="text-align: center;">
           <h1 style="font-size: 5vw;">Objetivo</h1>
           <p style="margin: 2rem 0px 3rem 0px;">
             Desarrollar un aplicativo web que promueva el turismo <br />
@@ -61,13 +68,6 @@
             <br />
             a las convencionales.
           </p>
-        </div>
-        <div class="col-sm-12" style="text-align: center">
-          <img
-            style="border-radius:15px; box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.3);"
-            src="../assets/img/introduction/cano-cristal.jpg"
-            class="img-fluid"
-          />
         </div>
       </div>
     </main>
@@ -77,8 +77,8 @@
           <p><span>Equipo de desarrollo</span> <br /></p>
           <p>
             Juan José García,<br />
-            Enmanuel Domínguez y <br />
-            Aaron Tadeo Cubillos
+            Juan David Velásquez y <br />
+            Jacobo Uribe Domínguez
           </p>
         </div>
         <div class="col">
@@ -150,9 +150,11 @@ export default {
 .objetiveSection {
   background-color: rgb(0, 190, 201);
   color: white;
+  display: grid;
   font-family: "Roboto", sans-serif;
   font-size: 1.25vw;
-  padding: 5vh 0px;
+  grid-gap:20px;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .objetiveSection span {
