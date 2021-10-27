@@ -68,24 +68,31 @@
               </svg>
               Objetivo
             </h1>
-            <p class="mt-4" style="width:70%;">
+            <p class="mt-4" style="width:80%;">
               Desarrollar un aplicativo web que promueva el turismo
               ecológico en Colombia, mostrando alternativas turísticas diferentes
               a las convencionales.
             </p>
           </div>
         </div>
-        <div class="row interestSection p-5" id="introduction">
-          <div class="col" style="padding-right:4rem;text-align:justify;">
-            <p><span>Nuestro interés</span></p>
-            <p>
-              Se busca mostrar una mayor gamma de opciones turísticas en Colombia,
-              saliendo de lo convencional y haciendo énfasis en el ecoturismo,
-              ofreciendo las mejores opciones de viaje.
-            </p>
-            <a class="btn btn-primary" href="#" role="button"> Lugares </a>
+        <div class="interestSection p-5" id="introduction">
+          <div class="px-5" style="padding-right:4rem;text-align:justify;">
+            <div>
+              <h1>Nuestro interés</h1>
+              <p>
+                Se busca mostrar una mayor gamma de opciones turísticas en Colombia,
+                saliendo de lo convencional y haciendo énfasis en el ecoturismo,
+                ofreciendo las mejores opciones de viaje.
+              </p>
+              <button class="interestSectionBtn">
+                Lugares 
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>  
+              </button>
+            </div>
           </div>
-          <div class="col">
+          <div class="px-5">
             <img
               src="../assets/img/introduction/guy-walking.jpg"
               class="img-fluid"
@@ -181,15 +188,63 @@ export default {
 .interestSection {
   align-items:center;
   color: black;
-  display:flex;
+  display:grid;
   font-family: "Roboto", sans-serif;
   font-size: 1.25vw;
+  grid-template-columns: 1fr 1fr;
   min-height:80vh;
 }
 
-.interestSection span {
-  color: #2f2c43;
-  font-size: 5vw;
+.interestSectionBtn {
+  align-items: center;
+  background: rgb(0, 190, 201);;
+  border: none;
+  color:white;
+  display:flex;
+  gap:.5rem;
+  justify-content: space-between;
+  padding: .5rem 1.5rem;
+}
+
+.interestSection div:nth-child(1){
+  display: flex;
+  flex-direction: column;
+}
+
+.interestSection div:nth-child(1) div {
+  margin-left:13%;
+  width:80%;
+}
+
+.interestSection div:nth-child(1) div p {
+  margin: .5rem 0px;
+  margin-bottom: 2rem;
+}
+
+.interestSection div:nth-child(1) div button {
+  font-size: 17px;
+  width:12rem;
+}
+
+.interestSection div:nth-child(2){
+  display:flex;
+  justify-content: center;
+}
+
+.interestSection div:nth-child(2) img {
+  width:90%;
+}
+
+.interestSection h1 {
+  color: rgb(0, 190, 201);
+  font-size: 45px;
+}
+
+.interestSection p {
+  color: rgb(0, 76, 80);
+  font-size: 17px;
+  letter-spacing: 1px;
+  text-align: left;
 }
 
 .objetiveSection {
@@ -200,6 +255,7 @@ export default {
   font-family: "Roboto", sans-serif;
   font-size: 17px;
   grid-template-columns: repeat(2, 1fr);
+  letter-spacing: 1px;
 }
 
 .objetiveSection h1 {
@@ -212,11 +268,6 @@ export default {
   flex-direction: column;
   justify-content:center;
   margin-left:45px;
-}
-
-.objetiveSection span {
-  text-align: center;
-  font-size: 5vw;
 }
 
 .titleSection {
@@ -272,31 +323,37 @@ span.seven {
 }
 
 span.one {
+  background: rgb(14, 122, 128);
   width:100px;
   height:100px;
 }
 
 span.two {
+  background: rgb(1, 147, 155);
   width:80px;
   height:80px;
 }
 
 span.three {
+  background: rgb(1, 147, 155);
   width:120px;
   height:120px;
 }
 
 span.four {
+  background: rgb(24, 169, 177);
   width:65px;
   height:65px;
 }
 
 span.five {
+  background: rgb(95, 218, 224);
   width:130px;
   height:130px;
 }
 
 span.six {
+  background: rgb(1, 147, 155);
   width:16px;
   height:16px;
 }
