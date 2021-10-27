@@ -12,7 +12,7 @@
           <span class="seven"></span>
         </div>
         <!-------------------------END ANIMACION------------------------->
-      <div class="introwallpaper">
+      <div class="introwallpaper" id="introwallpaper">
         <div class="introductionText">
           <div class="pb-5">
             <p>
@@ -84,7 +84,7 @@
                 saliendo de lo convencional y haciendo énfasis en el ecoturismo,
                 ofreciendo las mejores opciones de viaje.
               </p>
-              <button class="interestSectionBtn">
+              <button @click="goTo('home')" class="interestSectionBtn">
                 Lugares 
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
@@ -127,9 +127,9 @@
             <hr class="footerStickTitle"/>
           </h2>
           <ul class="footerList">
-            <li class="footerElementList">Inicio</li>
-            <li class="footerElementList">Reseñas</li>
-            <li class="footerElementList">Reservar</li>
+            <li class="footerElementList link" @click="goToInPage('#introwallpaper')">Inicio</li>
+            <li class="footerElementList link" @click="goTo('home')">Reservar</li>
+            <li class="footerElementList link">Reseñas</li>
           </ul>
         </div>
         <div class="footerElementContainer">
@@ -150,6 +150,14 @@
 export default {
   name: "Introduction",
   components: {},
+  methods : {
+    goTo(site){
+      this.$router.push(`/${site}`)
+    },
+    goToInPage(site){
+      location.href=site
+    }
+  }
 };
 </script>
 
@@ -193,6 +201,10 @@ export default {
   letter-spacing: .5px;
   padding: .5rem 0px;
   text-align: center;
+}
+
+.footerElementList.link:hover {
+  color: rgb(219, 219, 219);
 }
 
 .footerStickTitle {
