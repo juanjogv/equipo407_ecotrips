@@ -101,29 +101,45 @@
         </div>
       </div>
     </main>
-    <footer class="footerSection d-flex justify-content-center pt-2">
-      <div class="row" style="width: 50%">
-        <div class="col">
-          <p><span>Equipo de desarrollo</span> <br /></p>
-          <p>
-            Juan José García,<br />
-            Juan David Velásquez y <br />
-            Jacobo Uribe Domínguez
-          </p>
+    <footer class="footerSection d-flex justify-content-center">
+      <div class="footerElementsContainer">
+        <div class="footerElementContainer">
+          <h2 class="footerTitleElement">
+            Equipo de desarrollo
+            <hr class="footerStickTitle"/>
+          </h2>
+          
+          <ul class="footerList">
+            <li class="footerElementList">
+              Juan José García
+            </li>
+            <li class="footerElementList">
+              Juan David Velásquez
+            </li>
+            <li class="footerElementList">
+              Jacobo Uribe Domínguez
+            </li>
+          </ul>
         </div>
-        <div class="col">
-          <p><span>Servicios</span> <br /></p>
-          <p>
-            <a href="#">Inicio</a> <br />
-            <a href="#">Reseñas</a> <br />
-            <a href="#">Reservar</a> <br />
-          </p>
+        <div class="footerElementContainer">
+          <h2 class="footerTitleElement">
+            Servicios
+            <hr class="footerStickTitle"/>
+          </h2>
+          <ul class="footerList">
+            <li class="footerElementList">Inicio</li>
+            <li class="footerElementList">Reseñas</li>
+            <li class="footerElementList">Reservar</li>
+          </ul>
         </div>
-        <div class="col">
-          <p><span>EcoTrips</span> <br /></p>
-          <p>
+        <div class="footerElementContainer">
+          <h2 class="footerTitleElement">
+            EcoTrips
+            <hr class="footerStickTitle"/>
+          </h2>
+          <div class="footerElementList" style="width:100%; height:100%; display:flex; justify-content:center;">
             El mejor sitio de ecoturismo en Colombia
-          </p>
+          </div>
         </div>
       </div>
     </footer>
@@ -148,18 +164,46 @@ export default {
 }
 
 .footerSection {
-  background-color: #313131;
-  width: 100%;
+  background-color: rgb(0, 190, 201);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
   color: white;
+  padding: 5rem 0px;
+  width: 100%;
 }
 
-.footerSection p {
-  font-size: 0.75vw;
-  margin-bottom: 0.75vw;
+.footerElementsContainer {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  width:100%;
 }
 
-.footerSection p span {
-  font-weight: bold;
+.footerElementContainer {
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+}
+
+.footerList {
+  list-style: none;
+  padding: 0;
+}
+
+.footerElementList {
+  font-size:13px;
+  letter-spacing: .5px;
+  padding: .5rem 0px;
+  text-align: center;
+}
+
+.footerStickTitle {
+  color:white;
+  height:2px;
+  width:100%;
+}
+
+.footerTitleElement {
+  font-size:27px;
+  margin-bottom: 2rem;
 }
 
 .introwallpaper {
