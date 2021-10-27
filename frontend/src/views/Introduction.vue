@@ -1,6 +1,17 @@
 <template>
   <div>
     <main>
+      <!---------------------------ANIMATION--------------------------->
+        <div class="animation">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+          <span class="four"></span>
+          <span class="five"></span>
+          <span class="six"></span>
+          <span class="seven"></span>
+        </div>
+        <!-------------------------END ANIMACION------------------------->
       <div class="introwallpaper">
         <div class="introductionText">
           <div class="pb-5">
@@ -35,7 +46,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="content">
         <div class="titleSection">
           <h1>
             ECOTRIPS
@@ -182,7 +193,7 @@ export default {
 }
 
 .objetiveSection {
-  background-color: rgba(243, 243, 243, 0.603);
+  background-color: rgb(243, 243, 243);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
   color: rgb(0, 76, 80);
   display: grid;
@@ -211,7 +222,7 @@ export default {
 .titleSection {
   display:flex;
   justify-content: center;
-  margin: 6vh 0px;
+  padding: 6vh 0px;
 }
 
 .titleSection h1 {
@@ -233,6 +244,120 @@ export default {
   margin: 0;
   margin-top:5px;
   width:75%;
+}
+
+/*ANIMATION*/
+
+.animation {
+  height:100vh;
+  position:fixed;
+  width:100vw;
+  z-index:-1;
+}
+
+span.one,
+span.two,
+span.three,
+span.four,
+span.five,
+span.six,
+span.seven {
+  animation: vuela 10s linear infinite normal both;
+  background: rgb(0, 190, 201);
+  border:0;
+  bottom:-100px;
+  display:block;
+  left: 0;
+  position:absolute;
+}
+
+span.one {
+  width:100px;
+  height:100px;
+}
+
+span.two {
+  width:80px;
+  height:80px;
+}
+
+span.three {
+  width:120px;
+  height:120px;
+}
+
+span.four {
+  width:65px;
+  height:65px;
+}
+
+span.five {
+  width:130px;
+  height:130px;
+}
+
+span.six {
+  width:16px;
+  height:16px;
+}
+
+span.seven {
+  width:99px;
+  height:99px;
+}
+
+@keyframes vuela {
+  from {
+    transform: rotate(0deg);
+    bottom: -100px;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    transform: rotate(360deg);
+    bottom: calc(100% + 100px);
+    opacity: 0;
+  }
+}
+
+.animation span:nth-child(1) {
+  left: 20%;
+  animation-delay: .63s;
+}
+
+.animation span:nth-child(2) {
+  left: 43%;
+  animation-delay: 7.2s;
+}
+
+.animation span:nth-child(3) {
+  left: 78%;
+  animation-delay: 3.3s;
+}
+
+.animation span:nth-child(4) {
+  left: 63%;
+  animation-delay: .18s;
+}
+
+.animation span:nth-child(5) {
+  left: 22%;
+  animation-delay: 5.3s;
+}
+
+.animation span:nth-child(6) {
+  left: 14%;
+  animation-delay: 1.5s;
+}
+
+.animation span:nth-child(7) {
+  left: 83%;
+  animation-delay: 2.5s;
 }
 
 </style>
