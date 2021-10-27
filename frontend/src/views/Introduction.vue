@@ -52,10 +52,10 @@
           />
         </div>
       </div>
-      <div class="row objetiveSection p-5">
-        <div class="col-sm-12" style="text-align: center">
-          <p>
-            <span>Objetivo</span> <br />
+      <div class="row objetiveSection">
+        <div class="col-sm-12" style="text-align: center;">
+          <h1 style="font-size: 5vw;">Objetivo</h1>
+          <p style="margin: 2rem 0px 3rem 0px;">
             Desarrollar un aplicativo web que promueva el turismo <br />
             ecológico en Colombia, mostrando alternativas turísticas diferentes
             <br />
@@ -64,6 +64,7 @@
         </div>
         <div class="col-sm-12" style="text-align: center">
           <img
+            style="border-radius:15px; box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.3);"
             src="../assets/img/introduction/cano-cristal.jpg"
             class="img-fluid"
           />
@@ -151,6 +152,7 @@ export default {
   color: white;
   font-family: "Roboto", sans-serif;
   font-size: 1.25vw;
+  padding: 5vh 0px;
 }
 
 .objetiveSection span {
