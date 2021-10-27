@@ -36,12 +36,12 @@
         </div>
       </div>
       <div class="row interestSection p-5" id="introduction">
-        <div class="col">
-          <p><span>Nuestro interés.</span></p>
+        <div class="col" style="padding-right:4rem;text-align:justify;">
+          <p><span>Nuestro interés</span></p>
           <p>
             Se busca mostrar una mayor gamma de opciones turísticas en Colombia,
             saliendo de lo convencional y haciendo énfasis en el ecoturismo,
-            ofreciendo las mejores opciones de viaje
+            ofreciendo las mejores opciones de viaje.
           </p>
           <a class="btn btn-primary" href="#" role="button"> Lugares </a>
         </div>
@@ -133,9 +133,12 @@ export default {
 }
 
 .interestSection {
+  align-items:center;
   color: black;
+  display:flex;
   font-family: "Roboto", sans-serif;
   font-size: 1.25vw;
+  min-height:80vh;
 }
 
 .interestSection span {
