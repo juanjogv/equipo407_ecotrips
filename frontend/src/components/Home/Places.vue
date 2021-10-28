@@ -1,16 +1,16 @@
 <template>
   <div class="pt-4 pb-5" v-if="filtrarProducto != ''">
-    <div class="">
-      <p><span>Lugares turisticos</span></p>
+    <div>
+      <h1 class="placesTitle">Lugares turisticos</h1>
     </div>
-    <div class="row justify-content-start align-items-center">
-      <div class="col-sm-3 text-end" v-if="findByCity == ''">
-        <h3>Creemos que te podrian interesar estos lugares</h3>
+    <div class="elementsContainer justify-content-start align-items-center mt-5">
+      <div class="elementIsText" v-if="findByCity == ''">
+        <h3 style="font-size: 25px;width:80%;">Creemos que te podrian interesar estos lugares.</h3>
       </div>
       <div
         v-for="(place, index) in places ? filtrarProducto.slice(0, 6) : 6"
         :key="index"
-        class="col-sm-3"
+        class=""
       >
         <img
           :src="places ? place.home_photo : imageLoader"
@@ -18,7 +18,7 @@
           class="img-fluid"
           v-on:click="storeProduct(place)"
         />
-        <p>
+        <p class="elementName">
           {{ places ? place.name : "Loading..." }}
         </p>
       </div>
@@ -55,4 +55,31 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+
+.elementsContainer {
+  display:grid;
+  gap:15px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+}
+
+.elementIsText {
+  height:100%;
+  text-align: left;
+  margin-top:6rem;
+}
+
+.elementName {
+  font-size:17px;
+  font-weight: bold;
+  margin-top: .5rem;
+}
+.placesTitle {
+  font-weight: bold;
+  font-size:2.8rem;
+  margin-top:2rem;
+}
+
+</style>

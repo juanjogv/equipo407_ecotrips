@@ -74,7 +74,15 @@ export default {
 }
 
 .mainSearcher {
-  margin: 14.8% 20%;
+  align-items:center;
+  display:flex;
+  justify-content: center;
+  height:100%;
+  width:100%;
+}
+
+.mainSearcher form {
+  width:50%;
 }
 
 .searcher-wallpaper {
@@ -82,4 +90,13 @@ export default {
   background-size: cover;
   height: 40vh;
 }
+
+.form-control {
+  border:none;
+  border-radius:30px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  padding:1rem 2.5rem;
+}
+
 </style>

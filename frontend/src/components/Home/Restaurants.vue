@@ -1,23 +1,24 @@
 <template>
   <div class="pt-4 pb-5" v-if="filtrarProducto != ''">
-    <div class="">
-      <p><span>Restauranates populares</span></p>
+    <div>
+      <h1 class="placesTitle">Restaurantes populares</h1>
     </div>
-    <div class="row">
+    <div class="elementsContainer mt-5">
       <div
         v-for="(restaurant, index) in restaurants
           ? filtrarProducto.slice(0, 4)
           : 4"
         :key="index"
-        class="col-sm-3"
+        class="d-flex flex-column justify-content-between"
       >
         <img
           :src="restaurants ? restaurant.home_photo : imageLoader"
           alt=""
+          style="width:100%;"
           class="img-fluid"
           v-on:click="storeProduct(restaurant)"
         />
-        <p>{{ restaurants ? restaurant.name : "Loading..." }}</p>
+        <p class="elementName">{{ restaurants ? restaurant.name : "Loading..." }}</p>
       </div>
     </div>
   </div>
@@ -51,4 +52,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+.restaurantsContainer {
+  display:grid;
+  gap:15px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.placesTitle {
+  font-weight: bold;
+  font-size:2.8rem;
+  margin-top:2rem;
+}
+
+</style>

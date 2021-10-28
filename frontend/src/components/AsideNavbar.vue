@@ -32,6 +32,7 @@ export default {
 };
 </script>
 <style scoped>
+
 body {
   font-family: "Lato", sans-serif;
   transition: background-color 0.5s;
