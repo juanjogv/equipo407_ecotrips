@@ -3,7 +3,7 @@
     <div>
       <h1 class="placesTitle">Restaurantes populares</h1>
     </div>
-    <div class="restaurantsContainer mt-5">
+    <div class="elementsContainer mt-5">
       <div
         v-for="(restaurant, index) in restaurants
           ? filtrarProducto.slice(0, 4)
@@ -18,7 +18,7 @@
           class="img-fluid"
           v-on:click="storeProduct(restaurant)"
         />
-        <p class="namePlace">{{ restaurants ? restaurant.name : "Loading..." }}</p>
+        <p class="elementName">{{ restaurants ? restaurant.name : "Loading..." }}</p>
       </div>
     </div>
   </div>

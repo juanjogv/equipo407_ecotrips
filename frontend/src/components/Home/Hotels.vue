@@ -1,13 +1,12 @@
 <template>
   <div class="pt-4 pb-5" v-if="filtrarProducto != ''">
     <div class="">
-      <p><span>Alojamientos</span></p>
+      <h1 class="placesTitle">Alojamientos</h1>
     </div>
-    <div class="row justify-content-end align-items-center">
+    <div class="elementsContainer justify-content-end align-items-center mt-5">
       <div
         v-for="(hotel, index) in hotels ? filtrarProducto.slice(0, 3) : 3"
         :key="index"
-        class="col-sm-3"
       >
         <img
           :src="hotels ? hotel.home_photo : imageLoader"
@@ -15,15 +14,14 @@
           class="img-fluid"
           v-on:click="storeProduct(hotel)"
         />
-        <p>{{ hotels ? hotel.name : "Loading..." }}</p>
+        <p class="elementName">{{ hotels ? hotel.name : "Loading..." }}</p>
       </div>
-      <div class="col-sm-3" v-if="findByCity == ''">
-        <h3>Creemos que te podrian interesar estos hoteles</h3>
+      <div class="elementIsText" v-if="findByCity == ''">
+        <h3 style="font-size: 25px;width:80%;">Creemos que te podrian interesar estos hoteles</h3>
       </div>
       <div
         v-for="(hotel, index) in hotels ? filtrarProducto.slice(3, 6) : 3"
         :key="index"
-        class="col-sm-3"
       >
         <img
           :src="hotels ? hotel.home_photo : imageLoader"
@@ -31,7 +29,7 @@
           class="img-fluid"
           v-on:click="storeProduct(hotel)"
         />
-        <p>{{ hotels ? hotel.name : "Loading..." }}</p>
+        <p class="elementName">{{ hotels ? hotel.name : "Loading..." }}</p>
       </div>
     </div>
   </div>
