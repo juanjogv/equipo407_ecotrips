@@ -7,6 +7,7 @@
       <div
         v-for="(hotel, index) in hotels ? filtrarProducto.slice(0, 3) : 3"
         :key="index"
+        class="element"
       >
         <img
           :src="hotels ? hotel.home_photo : imageLoader"
@@ -22,6 +23,7 @@
       <div
         v-for="(hotel, index) in hotels ? filtrarProducto.slice(3, 6) : 3"
         :key="index"
+        class="element"
       >
         <img
           :src="hotels ? hotel.home_photo : imageLoader"
@@ -64,4 +66,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

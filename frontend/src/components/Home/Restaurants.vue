@@ -9,7 +9,7 @@
           ? filtrarProducto.slice(0, 4)
           : 4"
         :key="index"
-        class="d-flex flex-column justify-content-between"
+        class="d-flex flex-column justify-content-between element"
       >
         <img
           :src="restaurants ? restaurant.home_photo : imageLoader"
