@@ -1,7 +1,7 @@
 <template>
   <div class="pt-4 pb-5" v-if="filtrarProducto != ''">
     <div class="">
-      <p><span>Lugares turisticos</span></p>
+      <h1 class="placesTitle">Lugares turisticos</h1>
     </div>
     <div class="row justify-content-start align-items-center">
       <div class="col-sm-3 text-end" v-if="findByCity == ''">
@@ -55,4 +55,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+.placesTitle {
+  font-weight: bold;
+  letter-spacing: .5px;
+  margin-top:2rem;
+}
+
+</style>
