@@ -4,7 +4,7 @@
       <h1 class="placesTitle">Lugares turisticos</h1>
     </div>
     <div class="row justify-content-start align-items-center">
-      <div class="col-sm-3 text-end" v-if="findByCity == ''">
+      <div class="col-sm-3 text-end firstTextPlaces" v-if="findByCity == ''">
         <h3>Creemos que te podrian interesar estos lugares</h3>
       </div>
       <div
@@ -57,9 +57,13 @@ export default {
 
 <style>
 
+.firstTextPlaces {
+  height:100%;
+}
+
 .placesTitle {
   font-weight: bold;
-  letter-spacing: .5px;
+  font-size:2.8rem;
   margin-top:2rem;
 }
 
