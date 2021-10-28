@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark navbar-expand-lg">
+  <nav ref="nav" class="navbar navbar-dark navbar-expand-lg">
     <div class="container mb-4">
       <router-link to="/home" class="navbar-brand mb-0 h1">
         <img
@@ -100,6 +100,19 @@ export default {
       this.email = null;
       alert("Se cerro sesión correctamente");
     },
+    handleScroll(e) {
+      if(window.pageYOffset > 0 ){
+        this.$refs.nav.className = "navbar navbar-dark navbar-expand-lg navScrolled"
+      } else {
+        this.$refs.nav.className = "navbar navbar-dark navbar-expand-lg"
+      }
+    },
+  },
+  created(){
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed(){
+    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>
@@ -107,10 +120,15 @@ export default {
 <style scoped>
 nav {
   background-color: white;
-  /* position: sticky;
-  top: 0; */
+  position: sticky;
+  top: 0; 
   z-index: 1;
 }
+
+.navScrolled {
+  border-bottom: 1px solid rgb(228, 228, 228);
+}
+
 .nav-link {
   color: black !important;
 }
