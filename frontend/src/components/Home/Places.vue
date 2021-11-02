@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-4 pb-5" v-if="filtrarProducto != ''">
+  <div class="pt-4 pb-5 GlobalContainer" v-if="filtrarProducto != ''">
     <div>
       <h1 class="placesTitle">Lugares turisticos</h1>
     </div>
@@ -98,7 +98,15 @@ export default {
   }
 }
 
-@media(max-width: 399px) {
+@media(max-width:575px) {
+  .GlobalContainer {
+    --size: 3rem;
+    padding-left: var(--size);
+    padding-right: var(--size);
+  }
+}
+
+@media(max-width: 565px) {
   .elementsContainer {
     grid-template-columns: 1fr;
   }
