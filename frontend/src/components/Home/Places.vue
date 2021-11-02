@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-4 pb-5" v-if="filtrarProducto != ''">
+  <div class="pt-4 pb-5 GlobalContainer" v-if="filtrarProducto != ''">
     <div>
       <h1 class="placesTitle">Lugares turisticos</h1>
     </div>
@@ -10,7 +10,7 @@
       <div
         v-for="(place, index) in places ? filtrarProducto.slice(0, 6) : 6"
         :key="index"
-        class=""
+        class="element"
       >
         <img
           :src="places ? place.home_photo : imageLoader"
@@ -57,6 +57,10 @@ export default {
 
 <style>
 
+.element:hover {
+  cursor:pointer;
+  opacity:0.8;
+}
 
 .elementsContainer {
   display:grid;
@@ -80,6 +84,32 @@ export default {
   font-weight: bold;
   font-size:2.8rem;
   margin-top:2rem;
+}
+
+@media(max-width: 991px) {
+  .elementsContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(max-width: 767px) {
+  .elementsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:575px) {
+  .GlobalContainer {
+    --size: 3rem;
+    padding-left: var(--size);
+    padding-right: var(--size);
+  }
+}
+
+@media(max-width: 565px) {
+  .elementsContainer {
+    grid-template-columns: 1fr;
+  }
 }
 
 </style>

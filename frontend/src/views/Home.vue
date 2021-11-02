@@ -99,4 +99,16 @@ export default {
   padding:1rem 2.5rem;
 }
 
+@media(max-width: 991px) {
+  .mainSearcher form {
+    width:75%;
+  }
+}
+
+@media(max-width: 575px) {
+  .mainSearcher form {
+    width:90%;
+  }
+}
+
 </style>
