@@ -1,6 +1,6 @@
 <template>
   <nav ref="nav" class="navbar navbar-dark navbar-expand-lg border-bottom">
-    <div class="container mb-4">
+    <div class="container">
       <router-link to="/home" class="navbar-brand mb-0 h1">
         <img src="../assets/img/EcoTrips_logo/EcoTrips.png" class="img-fluid" width="45" alt="Ecotrips logo" />
         <img src="../assets/img/EcoTrips_logo/TextoNegro.png" class="img-fluid" width="100" alt="Ecotrips logo" />

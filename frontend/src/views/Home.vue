@@ -1,6 +1,5 @@
 <template>
   <div>
-    <AsideNavbar @method="changeOpacity" />
     <div v-if="opacity" class="blinder"></div>
     <NavBar class="sticky-top" />
     <div class="container">
@@ -24,7 +23,6 @@
   </div>
 </template>
 <script>
-import AsideNavbar from "@/components/AsideNavbar";
 import NavBar from "@/components/NavBar";
 import Places from "@/components/Home/Places";
 import Restaurants from "@/components/Home/Restaurants";
@@ -33,7 +31,6 @@ import { mapState } from "vuex";
 export default {
   name: "Introduction",
   components: {
-    AsideNavbar,
     NavBar,
     Places,
     Hotels,
@@ -48,11 +45,7 @@ export default {
   mounted() {
     this.$store.dispatch("loadProducts");
   },
-  methods: {
-    changeOpacity() {
-      this.opacity = !this.opacity;
-    },
-  },
+  methods: {},
   computed: {
     ...mapState(["places"]),
     ...mapState(["restaurants"]),
