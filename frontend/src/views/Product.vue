@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar class="border-bottom" />
+    <NavBar />
     <div>
       <div class="container mt-3">
         <h3>{{ productToShow.name }}</h3>
@@ -19,16 +19,7 @@
                     <Map />
                   </div>
                   <div class="col-sm-10">
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      @click="bookProduct"
-                      v-if="
-                        productType == 'hotel' || productType == 'restaurant'
-                      "
-                    >
-                      Reservar
-                    </button>
+                    <button type="button" class="btn btn-primary" @click="bookProduct" v-if="productType == 'hotel' || productType == 'restaurant'">Reservar</button>
                   </div>
                 </div>
               </div>
@@ -48,13 +39,7 @@
                 <Description :productToShow="productToShow" />
               </div>
               <div class="opinionSection mt-1 mb-4 p-4">
-                <Review
-                  :reviews="reviews"
-                  :reviewsSize="reviewsSize"
-                  :productToShow="productToShow"
-                  :productType="productType"
-                  @getReviews="getReviews"
-                />
+                <Review :reviews="reviews" :reviewsSize="reviewsSize" :productToShow="productToShow" :productType="productType" @getReviews="getReviews" />
               </div>
             </div>
             <div class="col"></div>
@@ -96,23 +81,15 @@ export default {
     getReviews() {
       if (!this.productType) router.push("/home");
       if (this.productType == "place") {
-        axios
-          .get(
-            `${process.env.VUE_APP_BACKEND_URL}/reviews/${this.productToShow.id}`
-          )
-          .then((res) => {
-            this.reviews = res.data;
-            this.reviewsSize = res.data.length;
-          });
+        axios.get(`${process.env.VUE_APP_BACKEND_URL}/reviews/${this.productToShow.id}`).then((res) => {
+          this.reviews = res.data;
+          this.reviewsSize = res.data.length;
+        });
       } else {
-        axios
-          .get(
-            `${process.env.VUE_APP_BACKEND_URL}/datastructures/reviews/${this.productToShow.id}`
-          )
-          .then((res) => {
-            this.reviews = res.data;
-            this.reviewsSize = res.data.length;
-          });
+        axios.get(`${process.env.VUE_APP_BACKEND_URL}/datastructures/reviews/${this.productToShow.id}`).then((res) => {
+          this.reviews = res.data;
+          this.reviewsSize = res.data.length;
+        });
       }
     },
   },
