@@ -117,8 +117,8 @@ CREATE TABLE "hotels" (
   "hotel_desc" varchar(2500),
   "hotel_photos" text[],
   "hotel_home_photo" varchar(200),
-  "touristic_place_longitude" decimal(10,6),
-  "touristic_place_latitude" decimal(10,6)
+  "hotel_longitude" decimal(10,6),
+  "hotel_latitude" decimal(10,6)
 );
 
 -- ----------------------------
@@ -156,8 +156,8 @@ CREATE TABLE "restaurants" (
   "restaurant_desc" varchar(2500),
   "restaurant_photos" text[],
   "restaurant_home_photo" varchar(200),
-  "touristic_place_longitude" decimal(10,6),
-  "touristic_place_latitude" decimal(10,6)
+  "restaurant_longitude" decimal(10,6),
+  "restaurant_latitude" decimal(10,6)
 );
 
 -- ----------------------------
