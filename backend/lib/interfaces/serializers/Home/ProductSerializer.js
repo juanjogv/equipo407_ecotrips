@@ -7,6 +7,8 @@ const _serializeSingleProduct = (product) => {
     'photos': product.product_photos,
     'home_photo': product.product_home_photo,
     'city': product.product_city,
+    'longitude':product.product_longitude,
+    'latitude': product.product_latitude
   };
 };
 

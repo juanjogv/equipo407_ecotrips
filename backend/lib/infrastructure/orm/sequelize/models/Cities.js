@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     city_desc: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.STRING(2500),
       allowNull: true
     },
     city_photos: {

@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     restaurant_desc: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.STRING(2500),
       allowNull: true
     },
     restaurant_photos: {
@@ -29,6 +29,14 @@ module.exports = function(sequelize, DataTypes) {
     },
     restaurant_home_photo: {
       type: DataTypes.STRING(200),
+      allowNull: true
+    },
+    restaurant_longitude: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
+    },
+    restaurant_latitude: {
+      type: DataTypes.DECIMAL,
       allowNull: true
     }
   }, {

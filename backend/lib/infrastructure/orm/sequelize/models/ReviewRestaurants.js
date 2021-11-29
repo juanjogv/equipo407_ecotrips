@@ -23,12 +23,16 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    review_points: {
-      type: DataTypes.INTEGER,
+    review_title: {
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     review_desc: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.STRING(300),
+      allowNull: false
+    },
+    review_points: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {

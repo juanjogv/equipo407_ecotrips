@@ -28,6 +28,8 @@ module.exports = class extends HomeRepository {
         product_photos: seqHotel.hotel_photos,
         product_home_photo: seqHotel.hotel_home_photo,
         product_city: seqHotel.city.city_name,
+        product_longitude:seqHotel.hotel_longitude,
+        product_latitude: seqHotel.hotel_latitude
       });
     });
   }
@@ -51,6 +53,8 @@ module.exports = class extends HomeRepository {
         product_photos: seqRestaurant.restaurant_photos,
         product_home_photo: seqRestaurant.restaurant_home_photo,
         product_city: seqRestaurant.city.city_name,
+        product_longitude:seqRestaurant.restaurant_longitude,
+        product_latitude: seqRestaurant.restaurant_latitude
       });
     });
   }
@@ -74,6 +78,8 @@ module.exports = class extends HomeRepository {
         product_photos: seqTouristicPlace.touristic_place_photos,
         product_home_photo: seqTouristicPlace.touristic_place_home_photo,
         product_city: seqTouristicPlace.city.city_name,
+        product_longitude:seqTouristicPlace.touristic_place_longitude,
+        product_latitude: seqTouristicPlace.touristic_place_latitude
       });
     });
   }

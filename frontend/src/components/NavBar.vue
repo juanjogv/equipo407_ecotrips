@@ -1,35 +1,14 @@
 <template>
-  <nav ref="nav" class="navbar navbar-dark navbar-expand-lg">
-    <div class="container mb-4">
+  <nav ref="nav" class="navbar navbar-dark navbar-expand-lg border-bottom">
+    <div class="container">
       <router-link to="/home" class="navbar-brand mb-0 h1">
-        <img
-          src="../assets/img/EcoTrips_logo/EcoTrips.png"
-          class="img-fluid"
-          width="45"
-          alt="Ecotrips logo"
-        />
-        <img
-          src="../assets/img/EcoTrips_logo/TextoNegro.png"
-          class="img-fluid"
-          width="100"
-          alt="Ecotrips logo"
-        />
+        <img src="../assets/img/EcoTrips_logo/EcoTrips.png" class="img-fluid" width="45" alt="Ecotrips logo" />
+        <img src="../assets/img/EcoTrips_logo/TextoNegro.png" class="img-fluid" width="100" alt="Ecotrips logo" />
       </router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" style="color: black">&#9776;</span>
       </button>
-      <div
-        class="collapse navbar-collapse justify-content-end"
-        id="navbarTogglerDemo02"
-      >
+      <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav">
           <li class="nav-item d-flex" v-if="email == null">
             <router-link to="/auth" class="nav-link">
@@ -46,20 +25,13 @@
                 stroke-linejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
-                />
+                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
                 <path d="M20 12h-13l3 -3m0 6l-3 -3" />
               </svg>
               Login
             </router-link>
           </li>
-          <li
-            class="nav-item d-flex btn"
-            v-else
-            @click="logout"
-            style="font-size: 1.5rem !important"
-          >
+          <li class="nav-item d-flex btn" v-else @click="logout" style="font-size: 1.5rem !important">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-logout"
@@ -73,9 +45,7 @@
               stroke-linejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path
-                d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
-              />
+              <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
               <path d="M7 12h14l-3 -3m0 6l3 -3" />
             </svg>
             Logout
@@ -100,19 +70,6 @@ export default {
       this.email = null;
       alert("Se cerro sesión correctamente");
     },
-    handleScroll(e) {
-      if(window.pageYOffset > 0 ){
-        this.$refs.nav.className = "navbar navbar-dark navbar-expand-lg navScrolled"
-      } else {
-        this.$refs.nav.className = "navbar navbar-dark navbar-expand-lg"
-      }
-    },
-  },
-  created(){
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  destroyed(){
-    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>
@@ -121,12 +78,8 @@ export default {
 nav {
   background-color: white;
   position: sticky;
-  top: 0; 
+  top: 0;
   z-index: 1;
-}
-
-.navScrolled {
-  border-bottom: 1px solid rgb(228, 228, 228);
 }
 
 .nav-link {

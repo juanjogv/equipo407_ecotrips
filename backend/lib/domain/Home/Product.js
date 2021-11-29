@@ -9,6 +9,8 @@ module.exports = class {
     product_photos,
     product_home_photo,
     product_city,
+    product_longitude,
+    product_latitude
   }) {
     this.id = id;
     this.id_city = id_city;
@@ -17,5 +19,7 @@ module.exports = class {
     this.product_photos = product_photos;
     this.product_home_photo = product_home_photo;
     this.product_city = product_city;
+    this.product_longitude = product_longitude;
+    this.product_latitude = product_latitude;
   }
 };
