@@ -1,3 +1,7 @@
+CREATE ROLE api;
+
+ALTER ROLE "api" LOGIN PASSWORD 'Xve5TgYnBmdywY5RxQ';
+
 GRANT Connect ON DATABASE "ecotrips" TO "api";
 
 GRANT Delete, Insert, Select, Update ON TABLE "public"."booking_hotels" TO "api";
