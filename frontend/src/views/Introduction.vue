@@ -23,9 +23,9 @@
               </span>
             </p>
             <p class="ms-4">
-              Conoce lugares ecologicos, <br />
+              Conoce lugares ecológicos, <br />
               reserva viajes, gana premios <br />
-              e interactua con otros viajeros.
+              e interactúa con otros viajeros.
             </p>
             <div class="row">
               <div class="col align-content-center">
@@ -39,7 +39,7 @@
                   href="#introduction"
                   role="button"
                 >
-                  Conocenos
+                  Conócenos
                 </a>
               </div>
             </div>
@@ -80,7 +80,7 @@
             <div>
               <h1>Nuestro interés</h1>
               <p>
-                Se busca mostrar una mayor gamma de opciones turísticas en Colombia,
+                Se busca mostrar una mayor gama de opciones turísticas en Colombia,
                 saliendo de lo convencional y haciendo énfasis en el ecoturismo,
                 ofreciendo las mejores opciones de viaje.
               </p>
@@ -197,7 +197,7 @@ export default {
 }
 
 .footerElementList {
-  font-size:13px;
+  font-size:16px;
   letter-spacing: .5px;
   padding: .5rem 0px;
   text-align: center;
@@ -298,7 +298,7 @@ export default {
 
 .interestSection p {
   color: rgb(0, 76, 80);
-  font-size: 17px;
+  font-size: 19px;
   letter-spacing: 1px;
   text-align: left;
 }
@@ -309,7 +309,7 @@ export default {
   color: rgb(0, 76, 80);
   display: grid;
   font-family: "Roboto", sans-serif;
-  font-size: 17px;
+  font-size: 19px;
   grid-template-columns: repeat(2, 1fr);
   letter-spacing: 1px;
 }

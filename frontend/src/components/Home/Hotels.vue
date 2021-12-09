@@ -18,7 +18,7 @@
         <p class="elementName">{{ hotels ? hotel.name : "Loading..." }}</p>
       </div>
       <div class="elementIsText" v-if="findByCity == ''">
-        <h3 style="font-size: 25px;width:80%;">Creemos que te podrian interesar estos hoteles</h3>
+        <h3 style="font-size: 25px;width:80%;">Creemos que te podrían interesar estos hoteles</h3>
       </div>
       <div
         v-for="(hotel, index) in hotels ? filtrarProducto.slice(3, 6) : 3"

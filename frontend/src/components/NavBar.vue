@@ -28,10 +28,10 @@
                 <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
                 <path d="M20 12h-13l3 -3m0 6l-3 -3" />
               </svg>
-              Login
+              Iniciar sesión
             </router-link>
           </li>
-          <li class="nav-item d-flex btn" v-else @click="logout" style="font-size: 1.5rem !important">
+          <li class="nav-item d-flex btn" v-else @click="logout" style="font-size: 1.6rem !important">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-logout"
@@ -48,7 +48,7 @@
               <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
               <path d="M7 12h14l-3 -3m0 6l3 -3" />
             </svg>
-            Logout
+            Cerrar Sesión
           </li>
         </ul>
       </div>
@@ -68,7 +68,7 @@ export default {
     logout() {
       localStorage.clear("user_email");
       this.email = null;
-      alert("Se cerro sesión correctamente");
+      alert("Se cerró sesión correctamente");
     },
   },
 };
@@ -89,6 +89,6 @@ nav {
 form input,
 button,
 a {
-  font-size: 1.5rem !important;
+  font-size: 1.6rem !important;
 }
 </style>

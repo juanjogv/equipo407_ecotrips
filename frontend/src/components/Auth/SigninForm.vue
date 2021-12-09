@@ -1,7 +1,7 @@
 <template>
   <form>
     <div class="form-inner">
-      <h2>Signup</h2>
+      <h2>Registrarse</h2>
       <div class="form-group">
         <label htmlFor="name">Nombre:</label>
         <input
@@ -25,7 +25,7 @@
         <input type="text" name="idUser" id="idUser" v-model="user.user_id" />
       </div>
       <div class="form-group">
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">Correo electrónico:</label>
         <input
           type="email"
           name="email"
@@ -34,7 +34,7 @@
         />
       </div>
       <div class="form-group">
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Contraseña:</label>
         <input
           type="password"
           name="password"
@@ -44,10 +44,10 @@
       </div>
       <div class="row">
         <div class="col botonIzq">
-          <input type="submit" value="Signup" @click.prevent="submit" />
+          <input type="submit" value="Registrarse" @click.prevent="submit" />
         </div>
         <div class="col botonDer">
-          <input type="button" value="Login" @click="changeVisibility" />
+          <input type="button" value="Iniciar Sesión" @click="changeVisibility" />
         </div>
       </div>
     </div>

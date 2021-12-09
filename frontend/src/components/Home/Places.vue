@@ -1,11 +1,11 @@
 <template>
   <div class="pt-4 pb-5 GlobalContainer" v-if="filtrarProducto != ''">
     <div>
-      <h1 class="placesTitle">Lugares turisticos</h1>
+      <h1 class="placesTitle">Lugares turísticos</h1>
     </div>
     <div class="elementsContainer justify-content-start align-items-center mt-5">
       <div class="elementIsText" v-if="findByCity == ''">
-        <h3 style="font-size: 25px;width:80%;">Creemos que te podrian interesar estos lugares.</h3>
+        <h3 style="font-size: 25px;width:80%;">Creemos que te podrían interesar estos lugares.</h3>
       </div>
       <div
         v-for="(place, index) in places ? filtrarProducto.slice(0, 6) : 6"

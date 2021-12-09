@@ -9,7 +9,7 @@
             <input
               class="form-control mr-sm-2"
               type="search"
-              placeholder="¿A dónde vamos?"
+              placeholder="¿A dónde quieres ir?"
               aria-label="Search"
               v-model="findByCity"
             />

@@ -28,11 +28,11 @@
         <input
           type="text"
           v-model="review.review_desc"
-          placeholder="Escribe una opinion..."
+          placeholder="Escribe una opinión..." style="font-size: 16px;"
         />
       </div>
       <div class="col-sm-2">
-        <input type="submit" value="Enviar" @click.prevent="sendReview" />
+        <input type="submit" value="Enviar" @click.prevent="sendReview" style="font-size: 16px" />
       </div>
     </div>
   </div>
