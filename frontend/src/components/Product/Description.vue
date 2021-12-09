@@ -19,4 +19,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+p{
+  font-size: 17px;
+  margin-top: 30px;
+}
+
+</style>

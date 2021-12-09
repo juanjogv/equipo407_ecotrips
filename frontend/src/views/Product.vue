@@ -29,7 +29,7 @@
             <div class="col-sm-8">
               <div class="row tab">
                 <div class="col-sm-2">
-                  <div class="tablinks">Descripcion general</div>
+                  <div class="tablinks">Descripción general</div>
                 </div>
                 <div class="col-sm-2">
                   <div class="tablinks">Opiniones</div>
@@ -72,7 +72,7 @@ export default {
   methods: {
     bookProduct() {
       if (!localStorage.getItem("user_email")) {
-        alert("Primero debes de iniciar sesion para poder reservar");
+        alert("Primero debes de iniciar sesión para poder reservar");
         router.push("/auth");
       } else {
         alert("Se ha reservado correctamente");
@@ -104,6 +104,10 @@ export default {
 </script>
 
 <style scoped>
+
+h3{
+  font-size: 22px;
+}
 .mapSection {
   min-height: 65vh;
   max-height: 65vh;
