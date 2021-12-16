@@ -6,7 +6,6 @@ const JwtAccessTokenManager = require("../security/JwtAccessTokenManager");
 const UserSerializer = require("../../interfaces/serializers/UserSerializer");
 const ProductSerializer = require("../../interfaces/serializers/Home/ProductSerializer");
 const ReviewSerializer = require("../../interfaces/serializers/ReviewSerializer");
-const DataStructuresReviewSerializer = require("../../interfaces/serializers/DataStructures/ReviewSerializer");
 
 function buildBeans() {
   const beans = {
@@ -14,7 +13,6 @@ function buildBeans() {
     userSerializer: new UserSerializer(),
     productSerializer: new ProductSerializer(),
     reviewSerializer: new ReviewSerializer(),
-    dataStructuresReviewSerializer: new DataStructuresReviewSerializer(),
   };
 
   if (environment.database.dialect === constants.SUPPORTED_DATABASE.IN_MEMORY) {
