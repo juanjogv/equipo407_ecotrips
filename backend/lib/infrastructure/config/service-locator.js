@@ -19,21 +19,15 @@ function buildBeans() {
 
   if (environment.database.dialect === constants.SUPPORTED_DATABASE.IN_MEMORY) {
     throw new Error("Add In Memory support");
-  } else if (
-    environment.database.dialect === constants.SUPPORTED_DATABASE.MONGO
-  ) {
+  } else if (environment.database.dialect === constants.SUPPORTED_DATABASE.MONGO) {
     throw new Error("Add MongoDB support");
-  } else if (
-    environment.database.dialect === constants.SUPPORTED_DATABASE.POSTGRES
-  ) {
+  } else if (environment.database.dialect === constants.SUPPORTED_DATABASE.POSTGRES) {
     const UserRepository = require("../repositories/UserRepository");
     const HomeRepository = require("../repositories/HomeRepository");
     const ReviewRepository = require("../repositories/ReviewRepository");
-    const DataStructuresRepository = require("../repositories/DataStructuresRepository");
     beans.userRepository = new UserRepository();
     beans.homeRepository = new HomeRepository();
     beans.reviewRepository = new ReviewRepository();
-    beans.dataStructuresRepository = new DataStructuresRepository();
   } else {
     const UserRepositorySQLite = require("../repositories/UserRepositorySQLite");
     beans.userRepository = new UserRepositorySQLite();
