@@ -103,4 +103,6 @@ It may have a constructor to define its dependencies (concrete implementations -
 
 A use case can call objects in the same layer (such as data repositories) or in the domain layer.
 
-sequelize-auto -o "./lib/infrastructure/orm/sequelize/models" --cf p -d ecotrips -h postgres-development-db.c3jkemwvwcuj.us-east-2.rds.amazonaws.com -u postgres -p 5432 -x adminmaster -e postgres
+### To update sequelize models use the following command
+
+sequelize-auto -h [host] -d [database] -u [user] -x [password] -p [port] -e [dialect] -o [/path/to/models]
