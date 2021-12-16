@@ -1,4 +1,4 @@
-# equipo3xx_ecotrips
+# equipo407_ecotrips
 
 Ecotrips is a web application creatted to promote ecotourism in Colombia, offering recommendations of tourist sites along with accommodations and restaurants.
 
