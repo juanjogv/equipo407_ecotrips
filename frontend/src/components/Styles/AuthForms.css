@@ -122,6 +122,27 @@ form .form-inner input[type="button"]:hover {
   background-position: 100% 0%;
 }
 
+.error_no_write {
+  background-color: rgba(235, 143, 143, 0.918) !important;
+}
+
+.model-err-register {
+  background-color: rgb(224, 105, 105);
+  border: 1px solid rgb(194, 99, 99);
+  border-radius:7px;
+  margin-bottom: 50%;
+  padding:1rem;
+  width:35rem;
+  z-index:2;
+}
+
+.body-model-err-register {
+  color:white;
+  letter-spacing: 1px;
+  margin-bottom:1.5rem;
+  margin-top:1.5rem;
+}
+
 @media (max-width: 500px) {
   form .form-inner .form-group {
     display: block;
