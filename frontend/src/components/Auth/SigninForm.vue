@@ -72,17 +72,50 @@ export default {
     };
   },
   methods: {
+    //method for validate information
+    verification(){
+      let arr = []
+      let sw = true;
+      if(this.user.user_first_name === ''){
+        arr.push('Nombre')
+        sw = false;
+      }
+      if(this.user.user_last_name === ''){
+        arr.push('Apellido');
+        sw = false;
+      }
+      if(this.user.user_id === ''){
+        arr.push('Documento de identidad');
+        sw = false;
+      }
+      if(this.user.user_email === ''){
+        arr.push('Correo');
+        sw = false;
+      }
+      if(this.user.user_password === ''){
+        arr.push('Contraseña');
+        sw = false;
+      }
+      let msj = `ERROR AL REGISTRARSE: te hace falta los siguientes datos: `;
+      arr.forEach((element) => msj = msj + `\n ${element}`)
+      return { sw, msj };
+    },
     submit() {
-      axios
-        .post(`${process.env.VUE_APP_BACKEND_URL}/signin`, this.user)
-        .then((res) => {
-          if (res.data.valid) {
-            localStorage.setItem("user_email", this.user.user_email);
-            router.push("/home");
-          } else {
-            alert(res.data.msg);
-          }
-        });
+      let { sw, msj } = this.verification();
+      if(sw){
+        axios
+          .post(`${process.env.VUE_APP_BACKEND_URL}/signin`, this.user)
+          .then((res) => {
+            if (res.data.valid) {
+              localStorage.setItem("user_email", this.user.user_email);
+              router.push("/home");
+            } else {
+              alert(res.data.msg);
+            }
+          });
+      } else {
+        alert(msj);
+      }
     },
     changeVisibility() {
       this.method();
