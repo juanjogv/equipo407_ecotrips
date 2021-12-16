@@ -5,41 +5,45 @@
       <div class="form-group">
         <label htmlFor="name">Nombre:</label>
         <input
+          ref="name"
           type="text"
           name="first-name"
           id="first-name"
-          v-model="user.user_first_name"
+          v-model="user_first_name"
         />
       </div>
       <div class="form-group">
         <label htmlFor="name">Apellido:</label>
         <input
+          ref="lastname"
           type="text"
           name="last-name"
           id="last-name"
-          v-model="user.user_last_name"
+          v-model="user_last_name"
         />
       </div>
       <div class="form-group">
         <label htmlFor="name">Documento de Identidad:</label>
-        <input type="text" name="idUser" id="idUser" v-model="user.user_id" />
+        <input ref="id" type="text" name="idUser" id="idUser" v-model="user_id" />
       </div>
       <div class="form-group">
         <label htmlFor="email">Correo electrónico:</label>
         <input
+          ref="email"
           type="email"
           name="email"
           id="emailSignin"
-          v-model="user.user_email"
+          v-model="user_email"
         />
       </div>
       <div class="form-group">
         <label htmlFor="password">Contraseña:</label>
         <input
           type="password"
+          ref="password"
           name="password"
           id="passwordSignin"
-          v-model="user.user_password"
+          v-model="user_password"
         />
       </div>
       <div class="row">
@@ -56,65 +60,98 @@
 <script>
 import axios from "axios";
 import router from "@/router/index";
+import { mapActions } from 'vuex';
 export default {
   props: {
     method: { type: Function },
   },
   data() {
     return {
-      user: {
-        user_first_name: "",
-        user_last_name: "",
-        user_id: "",
-        user_email: "",
-        user_password: "",
-      },
+      user_first_name: "",
+      user_last_name: "",
+      user_id: "",
+      user_email: "",
+      user_password: ""
     };
   },
+  watch : {
+    user_first_name : function(val, oldVal) {
+      if(this.$refs.name.classList !== ""){
+        this.$refs.name.classList = "";
+      }
+    },
+    user_last_name : function(val, oldVal) {
+      if(this.$refs.lastname.classList !== ""){
+        this.$refs.lastname.classList = "";
+      }
+    },
+    user_id : function(val, oldVal) {
+      if(this.$refs.id.classList !== ""){
+        this.$refs.id.classList = "";
+      }
+    },
+    user_email : function(val, oldVal) {
+      if(this.$refs.email.classList !== ""){
+        this.$refs.email.classList = "";
+      }
+    },
+    user_password : function(val, oldVal) {
+      if(this.$refs.password.classList !== ""){
+        this.$refs.password.classList = "";
+      }
+    }
+  },
   methods: {
+    ...mapActions(['changeShowAuthErrRegister']),
+    handleChangeValidatingInformation(){
+      console.log("e")
+    },
     //method for validate information
     verification(){
-      let arr = []
       let sw = true;
-      if(this.user.user_first_name === ''){
-        arr.push('Nombre')
+      if(this.user_first_name === ''){
+        this.$refs.name.classList = "error_no_write"
         sw = false;
       }
-      if(this.user.user_last_name === ''){
-        arr.push('Apellido');
+      if(this.user_last_name === ''){
+        this.$refs.lastname.classList = "error_no_write"
         sw = false;
       }
-      if(this.user.user_id === ''){
-        arr.push('Documento de identidad');
+      if(this.user_id === ''){
+        this.$refs.id.classList = "error_no_write"
         sw = false;
       }
-      if(this.user.user_email === ''){
-        arr.push('Correo');
+      if(this.user_email === ''){
+        this.$refs.email.classList = "error_no_write"
         sw = false;
       }
-      if(this.user.user_password === ''){
-        arr.push('Contraseña');
+      if(this.user_password === ''){
+        this.$refs.password.classList = "error_no_write"
         sw = false;
       }
-      let msj = `ERROR AL REGISTRARSE: te hace falta los siguientes datos: `;
-      arr.forEach((element) => msj = msj + `\n ${element}`)
-      return { sw, msj };
+      return sw;
     },
     submit() {
-      let { sw, msj } = this.verification();
-      if(sw){
+      if(this.verification()){
+        let newUser = {
+          user_first_name : this.user_first_name,
+          user_last_name: this.user_last_name,
+          user_id: this.user_id,
+          user_email: this.user_email,
+          user_password: this.user_password,
+        }
         axios
-          .post(`${process.env.VUE_APP_BACKEND_URL}/signin`, this.user)
+          .post(`${process.env.VUE_APP_BACKEND_URL}/signin`, newUser)
           .then((res) => {
             if (res.data.valid) {
-              localStorage.setItem("user_email", this.user.user_email);
+              localStorage.setItem("user_email", this.user_email);
               router.push("/home");
             } else {
               alert(res.data.msg);
             }
           });
       } else {
-        alert(msj);
+        this.changeShowAuthErrRegister()
       }
     },
     changeVisibility() {

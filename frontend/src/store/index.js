@@ -9,6 +9,7 @@ export default createStore({
     productToShow: {},
     productType: null,
     imageLoader: require("../assets/loading.gif"),
+    showAuthErrRegister : false,
   },
   mutations: {
     addProductToShow(state, product) {
@@ -25,6 +26,12 @@ export default createStore({
     },
     setProductType(state, productType) {
       state.productType = productType;
+    },
+    setShowAuthErrRegister(state) {
+      state.showAuthErrRegister = true;
+      setTimeout(() => {
+        state.showAuthErrRegister = false;
+      }, 2000)
     },
   },
   getters: {},
@@ -47,7 +54,11 @@ export default createStore({
           .get(`${process.env.VUE_APP_BACKEND_URL}/home/restaurants`)
           .then((res) => commit("setRestaurants", res.data))
           .catch((error) => log.error(error));
-      }, 1000);
+      }, 1000)
+      
+    },
+    changeShowAuthErrRegister({ commit }){
+      commit("setShowAuthErrRegister");
     },
   },
   modules: {},
