@@ -6,18 +6,20 @@
         <label htmlFor="email">Correo electrónico:</label>
         <input
           type="email"
+          ref="user"
           name="email"
           id="emailLogin"
-          v-model="user.user_email"
+          v-model="user_email"
         />
       </div>
       <div class="form-group">
         <label htmlFor="password">Contraseña:</label>
         <input
           type="password"
+          ref="password"
           name="password"
           id="passwordLogin"
-          v-model="user.user_password"
+          v-model="user_password"
         />
       </div>
       <div class="row">
@@ -40,21 +42,54 @@ export default {
   },
   data() {
     return {
-      user: { user_email: "", user_password: "" },
+      user_email: "",
+      user_password : "",
     };
   },
+  watch : {
+    user_email : function(val, oldVal) {
+      if(this.$refs.user.classList !== ""){
+        this.$refs.user.classList = "";
+      }
+    },
+    user_password : function(val, oldVal) {
+      if(this.$refs.password.classList !== ""){
+        this.$refs.password.classList = "";
+      }
+    },
+  },
   methods: {
+    verification(){
+      let sw = true;
+      if(this.user_email === ''){
+        this.$refs.user.classList = "error_no_write"
+        sw = false;
+      }
+      if(this.user_password === ''){
+        this.$refs.password.classList = "error_no_write"
+        sw = false;
+      }
+      return sw;
+    },
     submit() {
-      axios
-        .post(`${process.env.VUE_APP_BACKEND_URL}/login`, this.user)
-        .then((res) => {
-          if (res.data.valid) {
-            localStorage.setItem("user_email", this.user.user_email);
-            router.push("/home");
-          } else {
-            alert(res.data.msg);
-          }
-        });
+      if(this.verification()){
+        let newUser = {
+          user_email : this.user_email,
+          user_password : this.user_password
+        }
+        axios
+          .post(`${process.env.VUE_APP_BACKEND_URL}/login`, newUser)
+          .then((res) => {
+            if (res.data.valid) {
+              localStorage.setItem("user_email", this.user_email);
+              router.push("/home");
+            } else {
+              this.$store.dispatch('changeShowAuthErrRegister');
+            }
+          });
+      } else {
+        this.$store.dispatch('changeShowAuthErrRegister');
+      }
     },
     changeVisibility() {
       this.method();
