@@ -10,13 +10,13 @@
         <div class="container">
           <div class="row pt-4">
             <div class="col-sm-8">
-              <Carousel :productToShow="productToShow"/>
+              <Carousel :productToShow="productToShow" />
             </div>
             <div class="col">
               <div class="ms-5 p-4 mapSection" style="background-color: #fff">
                 <div class="row">
                   <div class="col-sm-12">
-                    <Map :coordsLng="productToShow.longitude" :coordsLat="productToShow.latitude"/>
+                    <Map :coordsLng="productToShow.longitude" :coordsLat="productToShow.latitude" />
                   </div>
                   <div class="col-sm-10">
                     <button type="button" class="btn btn-primary" @click="bookProduct" v-if="productType == 'hotel' || productType == 'restaurant'">Reservar</button>
@@ -104,8 +104,7 @@ export default {
 </script>
 
 <style scoped>
-
-h3{
+h3 {
   font-size: 22px;
 }
 .mapSection {

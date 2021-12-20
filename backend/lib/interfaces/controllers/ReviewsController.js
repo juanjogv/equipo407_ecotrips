@@ -23,18 +23,10 @@ module.exports = {
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
-    const { user_email, product_id, review_title, review_desc, review_points } =
-      request.payload;
+    const { user_email, product_id, review_title, review_desc, review_points } = request.payload;
 
     // Treatment
-    const review = await CreateReview(
-      user_email,
-      product_id,
-      review_title,
-      review_desc,
-      review_points,
-      serviceLocator
-    );
+    const review = await CreateReview(user_email, product_id, review_title, review_desc, review_points, serviceLocator);
 
     // Output
     return serviceLocator.dataStructuresReviewSerializer.serialize(review);

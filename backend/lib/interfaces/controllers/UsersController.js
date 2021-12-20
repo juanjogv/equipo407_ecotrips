@@ -18,14 +18,7 @@ module.exports = {
 
     try {
       // Treatment
-      await SignInUser(
-        user_first_name,
-        user_last_name,
-        user_id,
-        user_email,
-        user_password,
-        serviceLocator
-      );
+      await SignInUser(user_first_name, user_last_name, user_id, user_email, user_password, serviceLocator);
 
       // Outputs
       return h.response({ valid: true });
@@ -36,9 +29,7 @@ module.exports = {
       } else {
         console.log(e);
       }
-      return h
-        .response({ statusCode: 500, error: "Internal Server Error", message })
-        .code(500);
+      return h.response({ statusCode: 500, error: "Internal Server Error", message }).code(500);
     }
   },
 
@@ -49,30 +40,23 @@ module.exports = {
     try {
       // Input
       const { user_email, user_password } = request.payload;
-      console.log(user_email, user_password);
+
       // Treatment
-      const user = await LogInUser(user_email, user_password, serviceLocator);
+      await LogInUser(user_email, user_password, serviceLocator);
 
       // Output
-      if (!user) throw "EMAIL_AND_PASS_NOT_MATCH";
-
       return h.response({ valid: true });
     } catch (e) {
       let message = "An internal server error occurred";
-      if (
-        e !== undefined &&
-        (e === "EMAIL_NOT_FOUND" || e === "EMAIL_AND_PASS_NOT_MATCH")
-      ) {
+      if (e !== undefined && (e === "EMAIL_NOT_FOUND" || e === "EMAIL_AND_PASS_NOT_MATCH")) {
         return h.response({
           valid: false,
-          msg: "Email and password not match",
+          msg: e == "EMAIL_NOT_FOUND" ? "Email address not found" : "Email address and password do not match",
         });
       } else {
         console.log(e);
       }
-      return h
-        .response({ statusCode: 500, error: "Internal Server Error", message })
-        .code(500);
+      return h.response({ statusCode: 500, error: "Internal Server Error", message }).code(500);
     }
   },
 
@@ -92,18 +76,10 @@ module.exports = {
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
-    const { userFirstName, userLastName, userID, userEmail, userPassword } =
-      request.payload;
+    const { userFirstName, userLastName, userID, userEmail, userPassword } = request.payload;
 
     // Treatment
-    const user = await CreateUser(
-      userFirstName,
-      userLastName,
-      userID,
-      userEmail,
-      userPassword,
-      serviceLocator
-    );
+    const user = await CreateUser(userFirstName, userLastName, userID, userEmail, userPassword, serviceLocator);
 
     // Output
     return serviceLocator.userSerializer.serialize(user);
