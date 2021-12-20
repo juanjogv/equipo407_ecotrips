@@ -36,8 +36,7 @@
     "require-directory": "^2.1.1",
     "sequelize": "^5.22.4",
     "sequelize-auto": "^0.8.5",
-    "sequelize-cli": "^6.2.0",
-    "typescript": "^4.3.5"
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "jest": "^27.3.0",
