@@ -1,8 +1,8 @@
-const UserRepository = require('../../../lib/domain/UserRepository');
+const UserRepository = require("../../../lib/domain/UserRepository");
 const mockUserRepository = new UserRepository();
-const DeleteUser = require('../../../lib/application/use_cases/DeleteUser');
+const DeleteUser = require("../../../lib/application/use_cases/User/DeleteUser");
 
-test('should resolve (without result)', async () => {
+test("should resolve (without result)", async () => {
   // given
   mockUserRepository.remove = jest.fn(() => true);
 
