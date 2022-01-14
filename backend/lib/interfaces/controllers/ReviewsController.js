@@ -10,10 +10,11 @@ module.exports = {
     const serviceLocator = request.server.app.serviceLocator;
 
     // Input
+    const product_type = request.params.productType;
     const product_id = request.params.id;
 
     // Treatment
-    const reviews = await ListReviews(product_id, serviceLocator);
+    const reviews = await ListReviews(product_type, product_id, serviceLocator);
 
     // Output
     return reviews.map(serviceLocator.reviewSerializer.serialize);

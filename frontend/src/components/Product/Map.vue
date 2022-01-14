@@ -14,18 +14,28 @@ export default {
   },
   setup(props) {
     onMounted(() => {
-      mapboxgl.accessToken = "pk.eyJ1IjoianVhbmpvZ3YiLCJhIjoiY2tzdGE5bjFmMTN6dzJvcG84a2locHA0MSJ9.JuMq5YMkJnQZQmpU5U5RQA";
-      const map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/streets-v11", // style URL
-        center: [parseFloat(props.coordsLng), parseFloat(props.coordsLat)], // starting position [lng, lat]
-        zoom: 12, // starting zoom
-      });
-      new mapboxgl.Marker().setLngLat([parseFloat(props.coordsLng), parseFloat(props.coordsLat)]).addTo(map);
+      if (props !== NaN) {
+        mapboxgl.accessToken = "pk.eyJ1IjoianVhbmpvZ3YiLCJhIjoiY2tzdGE5bjFmMTN6dzJvcG84a2locHA0MSJ9.JuMq5YMkJnQZQmpU5U5RQA";
+        const map = new mapboxgl.Map({
+          container: "map",
+          style: "mapbox://styles/mapbox/streets-v11", // style URL
+          center: [parseFloat(props.coordsLng), parseFloat(props.coordsLat)], // starting position [lng, lat]
+          zoom: 12, // starting zoom
+        });
+        new mapboxgl.Marker().setLngLat([parseFloat(props.coordsLng), parseFloat(props.coordsLat)]).addTo(map);
+      } else {
+        mapboxgl.accessToken = "pk.eyJ1IjoianVhbmpvZ3YiLCJhIjoiY2tzdGE5bjFmMTN6dzJvcG84a2locHA0MSJ9.JuMq5YMkJnQZQmpU5U5RQA";
+        const map = new mapboxgl.Map({
+          container: "map",
+          style: "mapbox://styles/mapbox/streets-v11", // style URL
+          center: [-75.577192, 6.210739], // starting position [lng, lat]
+          zoom: 12, // starting zoom
+        });
+        new mapboxgl.Marker().setLngLat([-75.577192, 6.210739]).addTo(map);
+      }
     });
     return {};
   },
-  mounted() {},
 };
 </script>
 
