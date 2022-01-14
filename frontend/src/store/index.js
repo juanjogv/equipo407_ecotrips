@@ -9,7 +9,7 @@ export default createStore({
     productToShow: {},
     productType: null,
     imageLoader: require("../assets/loading.gif"),
-    showAuthErrRegister : false,
+    showAuthErrRegister: false,
   },
   mutations: {
     addProductToShow(state, product) {
@@ -31,7 +31,7 @@ export default createStore({
       state.showAuthErrRegister = true;
       setTimeout(() => {
         state.showAuthErrRegister = false;
-      }, 2000)
+      }, 2000);
     },
   },
   getters: {},
@@ -41,23 +41,22 @@ export default createStore({
         axios
           .get(`${process.env.VUE_APP_BACKEND_URL}/home/touristic_places`)
           .then((res) => commit("setPlaces", res.data))
-          .catch((error) => log.error(error));
+          .catch((error) => console.error(error));
       }, 1000);
       setTimeout(() => {
         axios
           .get(`${process.env.VUE_APP_BACKEND_URL}/home/hotels`)
           .then((res) => commit("setHotels", res.data))
-          .catch((error) => log.error(error));
+          .catch((error) => console.error(error));
       }, 1000);
       setTimeout(() => {
         axios
           .get(`${process.env.VUE_APP_BACKEND_URL}/home/restaurants`)
           .then((res) => commit("setRestaurants", res.data))
-          .catch((error) => log.error(error));
-      }, 1000)
-      
+          .catch((error) => console.error(error));
+      }, 1000);
     },
-    changeShowAuthErrRegister({ commit }){
+    changeShowAuthErrRegister({ commit }) {
       commit("setShowAuthErrRegister");
     },
   },
