@@ -8,13 +8,7 @@
     </div>
     <div class="row mt-4" v-for="(review, index) in reviews" :key="index">
       <div class="col-auto pe-5">
-        <img
-          src="https://juanjogv-development-bucket.s3.us-east-2.amazonaws.com/ecotrips/blank-user.png"
-          alt=""
-          srcset=""
-          width="75"
-          class="userImage"
-        />
+        <img src="https://juanjogv-development-bucket.s3.us-east-2.amazonaws.com/ecotrips/blank-user.png" alt="" srcset="" width="75" class="userImage" />
       </div>
       <div class="col">
         <h4>{{ review.review_title }}</h4>
@@ -25,11 +19,7 @@
     </div>
     <div class="row mt-4">
       <div class="col-sm-10">
-        <input
-          type="text"
-          v-model="review.review_desc"
-          placeholder="Escribe una opinión..." style="font-size: 16px;"
-        />
+        <input type="text" v-model="review.review_desc" placeholder="Escribe una opinión..." style="font-size: 16px" />
       </div>
       <div class="col-sm-2">
         <input type="submit" value="Enviar" @click.prevent="sendReview" style="font-size: 16px" />
@@ -61,26 +51,11 @@ export default {
         alert("Primero debes de iniciar sesion para poder comentar");
         router.push("/auth");
       } else {
-        if (this.productType == "place") {
-          this.review.user_email = localStorage.getItem("user_email");
-          axios
-            .post(`${process.env.VUE_APP_BACKEND_URL}/reviews`, this.review)
-            .finally(() => {
-              this.$emit("getReviews");
-              this.review.review_desc = "";
-            });
-        } else {
-          this.review.user_email = localStorage.getItem("user_email");
-          axios
-            .post(
-              `${process.env.VUE_APP_BACKEND_URL}/datastructures/reviews`,
-              this.review
-            )
-            .finally(() => {
-              this.$emit("getReviews");
-              this.review.review_desc = "";
-            });
-        }
+        this.review.user_email = localStorage.getItem("user_email");
+        axios.post(`${process.env.VUE_APP_BACKEND_URL}/reviews`, this.review).finally(() => {
+          this.$emit("getReviews");
+          this.review.review_desc = "";
+        });
       }
     },
   },

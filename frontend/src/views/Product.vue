@@ -80,17 +80,10 @@ export default {
     },
     getReviews() {
       if (!this.productType) router.push("/home");
-      if (this.productType == "place") {
-        axios.get(`${process.env.VUE_APP_BACKEND_URL}/reviews/${this.productToShow.id}`).then((res) => {
-          this.reviews = res.data;
-          this.reviewsSize = res.data.length;
-        });
-      } else {
-        axios.get(`${process.env.VUE_APP_BACKEND_URL}/datastructures/reviews/${this.productToShow.id}`).then((res) => {
-          this.reviews = res.data;
-          this.reviewsSize = res.data.length;
-        });
-      }
+      axios.get(`${process.env.VUE_APP_BACKEND_URL}/reviews/${this.productType}/${this.productToShow.id}`).then((res) => {
+        this.reviews = res.data;
+        this.reviewsSize = res.data.length;
+      });
     },
   },
   computed: {

@@ -9,7 +9,7 @@ module.exports = {
     server.route([
       {
         method: "GET",
-        path: "/reviews/{id}",
+        path: "/reviews/{productType}/{id}",
         handler: ReviewsController.findReviews,
         options: {
           description: "Return a list of reviews for the product page",
