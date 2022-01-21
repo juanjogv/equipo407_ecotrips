@@ -5,7 +5,23 @@
     </div>
     <div class="elementsContainer mt-5">
       <div
-        v-for="(restaurant, index) in restaurants ? filtrarProducto.slice(0, 4) : 4"
+        v-for="(restaurant, index) in restaurants ? filtrarProducto.slice(0, 3) : 3"
+        :key="index"
+        class="d-flex flex-column justify-content-between element"
+      >
+        <img
+          :src="restaurants ? restaurant.home_photo : imageLoader"
+          alt=""
+          style="width: 100%"
+          class="img-fluid"
+          v-on:click="storeProduct(restaurant)"
+        />
+        <p class="elementName">{{ restaurants ? restaurant.name : "Loading..." }}</p>
+      </div>
+      <div class="elementIsText" v-if="findByCity == ''"></div>
+      <div class="elementIsText" v-if="findByCity == ''"></div>
+      <div
+        v-for="(restaurant, index) in restaurants ? filtrarProducto.slice(3, 6) : 3"
         :key="index"
         class="d-flex flex-column justify-content-between element"
       >
