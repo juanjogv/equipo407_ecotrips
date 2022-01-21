@@ -8,7 +8,7 @@
         <h3 style="font-size: 25px; width: 80%">Creemos que te podrían interesar estos lugares.</h3>
       </div>
       <div v-for="(place, index) in places ? filtrarProducto.slice(0, 6) : 6" :key="index" class="element">
-        <img :src="places ? place.home_photo : imageLoader" alt="" class="img-fluid" v-on:click="storeProduct(place)" />
+        <img :src="places ? place.home_photo : imageLoader" alt="" class="img-fluid" style="border-radius:15px" v-on:click="storeProduct(place)" />
         <p class="elementName">
           {{ places ? place.name : "Loading..." }}
         </p>
@@ -45,6 +45,9 @@ export default {
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed&display=swap');
+
 .element:hover {
   cursor: pointer;
   opacity: 0.8;
@@ -64,6 +67,8 @@ export default {
 }
 
 .elementName {
+  font-family: 'Cabin Condensed', sans-serif;
+  letter-spacing: 1px;
   font-size: 17px;
   font-weight: bold;
   margin-top: 0.5rem;

@@ -12,7 +12,7 @@
         <img
           :src="restaurants ? restaurant.home_photo : imageLoader"
           alt=""
-          style="width: 100%"
+          style="width: 100%; border-radius:7px"
           class="img-fluid"
           v-on:click="storeProduct(restaurant)"
         />
@@ -28,7 +28,7 @@
         <img
           :src="restaurants ? restaurant.home_photo : imageLoader"
           alt=""
-          style="width: 100%"
+          style="width: 100%; border-radius:7px;"
           class="img-fluid"
           v-on:click="storeProduct(restaurant)"
         />

@@ -11,8 +11,8 @@
         </div>
       </div>
       <Places :places="places" :findByCity="findByCity" />
-      <Restaurants :restaurants="restaurants" :findByCity="findByCity" />
       <Hotels :hotels="hotels" :findByCity="findByCity" />
+      <Restaurants :restaurants="restaurants" :findByCity="findByCity" />
     </div>
   </div>
 </template>
