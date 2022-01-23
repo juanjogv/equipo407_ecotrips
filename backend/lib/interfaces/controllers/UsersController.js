@@ -26,7 +26,7 @@ module.exports = {
       let message = "An internal server error occurred";
       if (e !== undefined && e === "ER_DUP_ENTRY") {
         message = "This email is already registered";
-        return Boom.badRequest(message);
+        return Boom.unauthorized(message);
       } else {
         console.log(e);
       }

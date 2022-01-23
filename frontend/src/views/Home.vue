@@ -10,6 +10,7 @@
           </form>
         </div>
       </div>
+      <SuccessAlert v-if="alertToShow == 'success'">{{ alertMessage }}</SuccessAlert>
       <Places :places="places" :findByCity="findByCity" />
       <Hotels :hotels="hotels" :findByCity="findByCity" />
       <Restaurants :restaurants="restaurants" :findByCity="findByCity" />
@@ -21,6 +22,7 @@ import NavBar from "@/components/NavBar";
 import Places from "@/components/Home/Places";
 import Restaurants from "@/components/Home/Restaurants";
 import Hotels from "@/components/Home/Hotels";
+import SuccessAlert from "@/components/Alerts/SuccessAlert";
 import { mapState } from "vuex";
 export default {
   name: "Home",
@@ -29,6 +31,7 @@ export default {
     Places,
     Hotels,
     Restaurants,
+    SuccessAlert,
   },
   data() {
     return {
@@ -44,6 +47,7 @@ export default {
     ...mapState(["places"]),
     ...mapState(["restaurants"]),
     ...mapState(["hotels"]),
+    ...mapState(["alertMessage", "alertToShow"]),
   },
 };
 </script>

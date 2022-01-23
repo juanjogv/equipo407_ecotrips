@@ -71,6 +71,8 @@ export default {
           .then((res) => {
             if (res.data.valid) {
               localStorage.setItem("user_email", this.user_email);
+              let alert = { message: "Se ha iniciado sesion en tu cuenta", alertToShow: "success" };
+              this.$store.dispatch("showAlert", alert);
               router.push("/home");
             }
           })
