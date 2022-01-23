@@ -5,7 +5,13 @@
     </div>
     <div class="elementsContainer justify-content-end align-items-center mt-5">
       <div v-for="(hotel, index) in hotels ? filtrarProducto.slice(0, 4) : 4" :key="index" class="element">
-        <img :src="hotels ? hotel.home_photo : imageLoader" alt="" class="img-fluid" style="border-radius:7px;" v-on:click="storeProduct(hotel)" />
+        <img
+          :src="hotels ? hotel.home_photo : imageLoader"
+          alt=""
+          class="img-fluid"
+          style="border-radius: 7px"
+          v-on:click="storeProduct(hotel)"
+        />
         <p class="elementName">{{ hotels ? hotel.name : "Loading..." }}</p>
       </div>
     </div>

@@ -23,7 +23,7 @@ import Restaurants from "@/components/Home/Restaurants";
 import Hotels from "@/components/Home/Hotels";
 import { mapState } from "vuex";
 export default {
-  name: "Introduction",
+  name: "Home",
   components: {
     NavBar,
     Places,
