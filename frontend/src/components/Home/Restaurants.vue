@@ -5,16 +5,30 @@
     </div>
     <div class="elementsContainer mt-5">
       <div
-        v-for="(restaurant, index) in restaurants
-          ? filtrarProducto.slice(0, 4)
-          : 4"
+        v-for="(restaurant, index) in restaurants ? filtrarProducto.slice(0, 3) : 3"
         :key="index"
         class="d-flex flex-column justify-content-between element"
       >
         <img
           :src="restaurants ? restaurant.home_photo : imageLoader"
           alt=""
-          style="width:100%;"
+          style="width: 100%; border-radius:7px"
+          class="img-fluid"
+          v-on:click="storeProduct(restaurant)"
+        />
+        <p class="elementName">{{ restaurants ? restaurant.name : "Loading..." }}</p>
+      </div>
+      <div class="elementIsText" v-if="findByCity == ''"></div>
+      <div class="elementIsText" v-if="findByCity == ''"></div>
+      <div
+        v-for="(restaurant, index) in restaurants ? filtrarProducto.slice(3, 6) : 3"
+        :key="index"
+        class="d-flex flex-column justify-content-between element"
+      >
+        <img
+          :src="restaurants ? restaurant.home_photo : imageLoader"
+          alt=""
+          style="width: 100%; border-radius:7px;"
           class="img-fluid"
           v-on:click="storeProduct(restaurant)"
         />
@@ -44,26 +58,22 @@ export default {
     ...mapState(["imageLoader"]),
     filtrarProducto() {
       if (this.findByCity === "") return this.restaurants;
-      return this.restaurants.filter((restaurant) =>
-        restaurant.city.toLowerCase().includes(this.findByCity.toLowerCase())
-      );
+      return this.restaurants.filter((restaurant) => restaurant.city.toLowerCase().includes(this.findByCity.toLowerCase()));
     },
   },
 };
 </script>
 
 <style>
-
 .restaurantsContainer {
-  display:grid;
-  gap:15px;
+  display: grid;
+  gap: 15px;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .placesTitle {
   font-weight: bold;
-  font-size:2.8rem;
-  margin-top:2rem;
+  font-size: 2.8rem;
+  margin-top: 2rem;
 }
-
 </style>

@@ -6,19 +6,13 @@
       <div class="searcher-wallpaper row">
         <div class="col mainSearcher">
           <form class="my-2 my-lg-0">
-            <input
-              class="form-control mr-sm-2"
-              type="search"
-              placeholder="¿A dónde quieres ir?"
-              aria-label="Search"
-              v-model="findByCity"
-            />
+            <input class="form-control mr-sm-2" type="search" placeholder="¿A dónde quieres ir?" aria-label="Search" v-model="findByCity" />
           </form>
         </div>
       </div>
       <Places :places="places" :findByCity="findByCity" />
-      <Restaurants :restaurants="restaurants" :findByCity="findByCity" />
       <Hotels :hotels="hotels" :findByCity="findByCity" />
+      <Restaurants :restaurants="restaurants" :findByCity="findByCity" />
     </div>
   </div>
 </template>
@@ -29,7 +23,7 @@ import Restaurants from "@/components/Home/Restaurants";
 import Hotels from "@/components/Home/Hotels";
 import { mapState } from "vuex";
 export default {
-  name: "Introduction",
+  name: "Home",
   components: {
     NavBar,
     Places,
@@ -67,15 +61,15 @@ export default {
 }
 
 .mainSearcher {
-  align-items:center;
-  display:flex;
+  align-items: center;
+  display: flex;
   justify-content: center;
-  height:100%;
-  width:100%;
+  height: 100%;
+  width: 100%;
 }
 
 .mainSearcher form {
-  width:50%;
+  width: 50%;
 }
 
 .searcher-wallpaper {
@@ -85,23 +79,22 @@ export default {
 }
 
 .form-control {
-  border:none;
-  border-radius:30px;
+  border: none;
+  border-radius: 30px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
   font-size: 18px;
-  padding:1rem 2.5rem;
+  padding: 1rem 2.5rem;
 }
 
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .mainSearcher form {
-    width:75%;
+    width: 75%;
   }
 }
 
-@media(max-width: 575px) {
+@media (max-width: 575px) {
   .mainSearcher form {
-    width:90%;
+    width: 90%;
   }
 }
-
 </style>

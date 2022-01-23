@@ -7,7 +7,7 @@ import util.Constants.FrontendEndpoints;
 import util.PropertiesManager;
 import util.Utils;
 
-public class Signup {
+public class SignupTestCase {
 	private WebDriver driver;
 
 	@BeforeClass
@@ -28,7 +28,7 @@ public class Signup {
 		String textvalidator = "Lugares turísticos";
 		SignupImpl signup = new SignupImpl(driver);
 		signup.sendData();
-		Assert.assertTrue("Valida el form", signup.isLoginSucces(textvalidator));
+		Assert.assertTrue("Valida el form", signup.isSignupSuccess(textvalidator));
 
 	}
 

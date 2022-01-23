@@ -19,7 +19,14 @@
                     <Map :coordsLng="productToShow.longitude" :coordsLat="productToShow.latitude" />
                   </div>
                   <div class="col-sm-10">
-                    <button type="button" class="btn btn-primary" @click="bookProduct" v-if="productType == 'hotel' || productType == 'restaurant'">Reservar</button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="bookProduct"
+                      v-if="productType == 'hotel' || productType == 'restaurant'"
+                    >
+                      Reservar
+                    </button>
                   </div>
                 </div>
               </div>
@@ -39,7 +46,13 @@
                 <Description :productToShow="productToShow" />
               </div>
               <div class="opinionSection mt-1 mb-4 p-4">
-                <Review :reviews="reviews" :reviewsSize="reviewsSize" :productToShow="productToShow" :productType="productType" @getReviews="getReviews" />
+                <Review
+                  :reviews="reviews"
+                  :reviewsSize="reviewsSize"
+                  :productToShow="productToShow"
+                  :productType="productType"
+                  @getReviews="getReviews"
+                />
               </div>
             </div>
             <div class="col"></div>
@@ -61,7 +74,7 @@ import Review from "@/components/Product/Review";
 import Description from "@/components/Product/Description";
 
 export default {
-  name: "",
+  name: "Product",
   components: { Carousel, Map, Review, Description, NavBar },
   data() {
     return {

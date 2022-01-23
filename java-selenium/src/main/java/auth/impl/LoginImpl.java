@@ -1,5 +1,4 @@
 package auth.impl;
-
 import auth.Login;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -40,8 +39,8 @@ public class LoginImpl implements Login {
     }
 
     public boolean isLoginSuccess() {
-        String validator = user.isLogged() ? "Lugares turísticos" : "!Porfavor digita los datos faltantes¡";
-        String validatorElement = user.isLogged() ? "//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1" : "//*[@id=\"app\"]/div/div/div[1]/div/div/h4";
+        String validator = user.isLogged() ? "Lugares turísticos" : "Email address not found";
+        String validatorElement = user.isLogged() ? "//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1" : "//*[@id=\"app\"]/div/div/div[1]/h4";
 
         new WebDriverWait(driver, Duration.ofSeconds(Test.WAIT_TIME_MS))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(validatorElement)));

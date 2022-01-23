@@ -1,70 +1,70 @@
 :root {
-  font-size: 62.5%;
-  --font-size--small: 1.4rem; /* 14px */
-  --font-size--default: 1.6rem; /* 16px */
-  --font-size--large: 2.4rem; /* 24px */
+	font-size: 62.5%;
+	--font-size--small: 1.4rem; /* 14px */
+	--font-size--default: 1.6rem; /* 16px */
+	--font-size--large: 2.4rem; /* 24px */
 }
 
 html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  user-select: none;
-  font-size: 1.6rem; /* 1rem = 10px */
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+	font-size: 1.6rem; /* 1rem = 10px */
 }
 
 .font-size--small {
-  font-size: var(--font-size--small);
+	font-size: var(--font-size--small);
 }
 
 .font-size--default {
-  font-size: var(--font-size--default);
+	font-size: var(--font-size--default);
 }
 
 .font-size--large {
-  font-size: var(--font-size--large);
+	font-size: var(--font-size--large);
 }
 
 .row {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .col {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+	width: 5px;
 }
 
 /* button */
 ::-webkit-scrollbar-button {
-  background: #222;
+	background: #222;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #333;
+	background: #333;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #666;
+	background: #666;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #000;
+	background: #000;
 }
 
 /* Corner */
 ::-webkit-scrollbar-corner {
-  background: #999;
+	background: #999;
 }
 
 /* Resizer */
 ::-webkit-resizer {
-  background: #111;
+	background: #111;
 }

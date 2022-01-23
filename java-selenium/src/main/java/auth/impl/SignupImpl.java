@@ -1,6 +1,9 @@
 package auth.impl;
 
 import auth.Signup;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import dto.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +11,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.Constants.Test;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.time.Duration;
+import java.util.ArrayList;
 
 public class SignupImpl implements Signup {
 
@@ -16,10 +24,12 @@ public class SignupImpl implements Signup {
 
 	private WebElement firstNameInput;
 	private WebElement lastNameInput;
-	private WebElement IDInput;
+	private WebElement IdInput;
 	private WebElement emailInput;
 	private WebElement passwordInput;
 	private WebElement SignupButton;
+
+	private User user;
 
 	public SignupImpl(WebDriver driver) {
 		this.driver = driver;
@@ -28,15 +38,16 @@ public class SignupImpl implements Signup {
 	}
 
 	public void sendData() {
-		firstNameInput.sendKeys("juan@gmail.com");
-		lastNameInput.sendKeys("123");
-		IDInput.sendKeys("123");
-		emailInput.sendKeys("123");
-		passwordInput.sendKeys("123");
+		this.getUser();
+		firstNameInput.sendKeys(user.getFirstName());
+		lastNameInput.sendKeys(user.getLastName());
+		IdInput.sendKeys(user.getId());
+		emailInput.sendKeys(user.getEmail());
+		passwordInput.sendKeys(user.getPassword());
 		SignupButton.click();
 	}
 
-	public boolean isLoginSucces(String validator) {
+	public boolean isSignupSuccess(String validator) {
 		new WebDriverWait(driver, Duration.ofSeconds(Test.WAIT_TIME_MS))
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1")));
 		String textToValidate = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1")).getText();
@@ -52,9 +63,25 @@ public class SignupImpl implements Signup {
 		new WebDriverWait(driver, Duration.ofSeconds(Test.WAIT_TIME_MS)).until(ExpectedConditions.elementToBeClickable(By.id("first-name")));
 		firstNameInput = driver.findElement(By.id("first-name"));
 		lastNameInput = driver.findElement(By.id("last-name"));
-		IDInput = driver.findElement(By.id("idUser"));
+		IdInput = driver.findElement(By.id("idUser"));
 		emailInput = driver.findElement(By.id("emailSignin"));
 		passwordInput = driver.findElement(By.id("passwordSignin"));
 		SignupButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/form[2]/div/div[6]/div[1]/input"));
+	}
+
+	private void getUser() {
+		ArrayList<User> users;
+
+		Gson gson = new Gson();
+
+		Type listType = new TypeToken<ArrayList<User>>() {
+		}.getType();
+
+		try (Reader reader = new FileReader("src/main/resources/users.json")) {
+			users = gson.fromJson(reader, listType);
+			user = users.get((int) Math.floor(Math.random() * (99) + (1)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
