@@ -25,10 +25,9 @@ public class SignupTestCase {
 	@Test
 	public void testMain() {
 
-		String textvalidator = "Lugares turísticos";
 		SignupImpl signup = new SignupImpl(driver);
 		signup.sendData();
-		Assert.assertTrue("Valida el form", signup.isSignupSuccess(textvalidator));
+		Assert.assertTrue("Valida el form", signup.isSignupSuccess());
 
 	}
 

@@ -225,7 +225,7 @@
   },
   {
     "firstName": "Binky",
-    "lastName": "O'Deegan",
+    "lastName": "O\u0027Deegan",
     "email": "bodeegans@posterous.com",
     "id": "5536393290373589",
     "password": "jCWucE49M",
@@ -433,7 +433,7 @@
   },
   {
     "firstName": "Reggi",
-    "lastName": "D'Onise",
+    "lastName": "D\u0027Onise",
     "email": "rdonise1i@fastcompany.com",
     "id": "670935389205226035",
     "password": "5bN7Cm",
@@ -541,14 +541,6 @@
     "email": "ndoneld1v@salon.com",
     "id": "201756118143902",
     "password": "i75Cvppu",
-    "isLogged": false
-  },
-  {
-    "firstName": "Tristan",
-    "lastName": "Lilliman",
-    "email": "tlilliman1w@dell.com",
-    "id": "4175007179915323",
-    "password": "53mqgB9",
     "isLogged": false
   },
   {
@@ -728,14 +720,6 @@
     "isLogged": false
   },
   {
-    "firstName": "Karole",
-    "lastName": "Gwilt",
-    "email": "kgwilt2j@sina.com.cn",
-    "id": "3568741568088295",
-    "password": "zflXyJUI",
-    "isLogged": false
-  },
-  {
     "firstName": "Neils",
     "lastName": "Fidler",
     "email": "nfidler2k@irs.gov",
@@ -798,5 +782,21 @@
     "id": "3534266799030172",
     "password": "AOnE3RVhL",
     "isLogged": false
+  },
+  {
+    "firstName": "Tristan",
+    "lastName": "Lilliman",
+    "email": "tlilliman1w@dell.com",
+    "id": "4175007179915323",
+    "password": "53mqgB9",
+    "isLogged": true
+  },
+  {
+    "firstName": "Karole",
+    "lastName": "Gwilt",
+    "email": "kgwilt2j@sina.com.cn",
+    "id": "3568741568088295",
+    "password": "zflXyJUI",
+    "isLogged": true
   }
 ]

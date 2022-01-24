@@ -1,14 +1,7 @@
 <template>
   <div class="row auth">
-    <DangerAlert v-if="alertToShow == 'danger'"
-      ><h4>{{ alertMessage }}</h4></DangerAlert
-    >
-    <SuccessAlert v-if="alertToShow == 'success'"
-      ><h4>{{ alertMessage }}</h4></SuccessAlert
-    >
-    <WarningAlert v-if="alertToShow == 'warning'"
-      ><h4>{{ alertMessage }}</h4></WarningAlert
-    >
+    <DangerAlert v-if="alertToShow == 'danger'">{{ alertMessage }}</DangerAlert>
+    <WarningAlert v-if="alertToShow == 'warning'">{{ alertMessage }}</WarningAlert>
     <div class="col-sm-auto">
       <img src="../assets/img/EcoTrips_logo/TextoLogo2.png" class="img-fluid" />
     </div>
@@ -22,7 +15,6 @@
 import Login from "@/components/Auth/LoginForm";
 import Signin from "@/components/Auth/SigninForm";
 import DangerAlert from "@/components/Alerts/DangerAlert";
-import SuccessAlert from "@/components/Alerts/SuccessAlert";
 import WarningAlert from "@/components/Alerts/WarningAlert";
 import router from "@/router/index";
 import { mapState } from "vuex";
@@ -37,7 +29,6 @@ export default {
     Login,
     Signin,
     DangerAlert,
-    SuccessAlert,
     WarningAlert,
   },
   data() {

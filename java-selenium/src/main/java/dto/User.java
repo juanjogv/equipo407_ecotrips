@@ -52,7 +52,7 @@ public class User {
 		return isLogged;
 	}
 
-	public void setHaveAccount(boolean haveAccount) {
-		this.isLogged = haveAccount;
+	public void setIsLogged(boolean isLogged) {
+		this.isLogged = isLogged;
 	}
 }
