@@ -47,10 +47,13 @@ public class SignupImpl implements Signup {
 		SignupButton.click();
 	}
 
-	public boolean isSignupSuccess(String validator) {
+	public boolean isSignupSuccess() {
+		String validator = user.isLogged() ? "This email is already registered" : "Lugares turísticos";
+		String validatorElement = user.isLogged() ? "//*[@id=\"app\"]/div/div/div[1]/h4" : "//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1";
+
 		new WebDriverWait(driver, Duration.ofSeconds(Test.WAIT_TIME_MS))
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1")));
-		String textToValidate = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1")).getText();
+				.until(ExpectedConditions.elementToBeClickable(By.xpath(validatorElement)));
+		String textToValidate = driver.findElement(By.xpath(validatorElement)).getText();
 		return validator.contains(textToValidate);
 	}
 

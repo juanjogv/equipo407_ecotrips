@@ -9,8 +9,8 @@ export default createStore({
     productToShow: {},
     productType: null,
     imageLoader: require("../assets/loading.gif"),
-    alertMessage: '',
-    alertToShow: '',
+    alertMessage: "",
+    alertToShow: "",
   },
   mutations: {
     addProductToShow(state, product) {
@@ -34,7 +34,7 @@ export default createStore({
       setTimeout(() => {
         state.alertMessage = "";
         state.alertToShow = "";
-      }, 10000);
+      }, 15000);
     },
   },
   getters: {},
@@ -59,7 +59,7 @@ export default createStore({
           .catch((error) => console.error(error));
       }, 1000);
     },
-    showAlert({ commit },alert) {
+    showAlert({ commit }, alert) {
       commit("showAlert", alert);
     },
   },

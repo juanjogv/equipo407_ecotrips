@@ -21,12 +21,12 @@ module.exports = {
       await SignInUser(user_first_name, user_last_name, user_id, user_email, user_password, serviceLocator);
 
       // Outputs
-      return h.unauthorized({ valid: true });
+      return h.response({ valid: true });
     } catch (e) {
       let message = "An internal server error occurred";
       if (e !== undefined && e === "ER_DUP_ENTRY") {
         message = "This email is already registered";
-        return Boom.badRequest(message);
+        return Boom.unauthorized(message);
       } else {
         console.log(e);
       }
