@@ -1,12 +1,7 @@
 <template>
   <div class="row auth">
-    <div class="d-flex justify-content-center align-items-center" v-if="showAuthErrRegister" style="position:absolute;">
-      <div class="model-err-register">
-        <div class="body-model-err-register">
-          <h4 class="text-center">!Porfavor digita los datos faltantes¡</h4>
-        </div> 
-      </div>
-    </div>
+    <DangerAlert v-if="alertToShow == 'danger'">{{ alertMessage }}</DangerAlert>
+    <WarningAlert v-if="alertToShow == 'warning'">{{ alertMessage }}</WarningAlert>
     <div class="col-sm-auto">
       <img src="../assets/img/EcoTrips_logo/TextoLogo2.png" class="img-fluid" />
     </div>
@@ -19,9 +14,12 @@
 <script>
 import Login from "@/components/Auth/LoginForm";
 import Signin from "@/components/Auth/SigninForm";
+import DangerAlert from "@/components/Alerts/DangerAlert";
+import WarningAlert from "@/components/Alerts/WarningAlert";
 import router from "@/router/index";
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 export default {
+  name: "AuthForm",
   beforeCreate() {
     if (localStorage.getItem("user_email")) {
       router.push("/home");
@@ -30,6 +28,8 @@ export default {
   components: {
     Login,
     Signin,
+    DangerAlert,
+    WarningAlert,
   },
   data() {
     return {
@@ -43,7 +43,7 @@ export default {
       this.signin = !this.signin;
     },
   },
-  computed : mapState(['showAuthErrRegister'])
+  computed: mapState(["alertMessage", "alertToShow"]),
 };
 </script>
 <style scoped>

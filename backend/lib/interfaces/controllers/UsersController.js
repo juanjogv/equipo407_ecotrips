@@ -21,11 +21,12 @@ module.exports = {
       await SignInUser(user_first_name, user_last_name, user_id, user_email, user_password, serviceLocator);
 
       // Outputs
-      return h.response({ valid: true });
+      return h.unauthorized({ valid: true });
     } catch (e) {
       let message = "An internal server error occurred";
       if (e !== undefined && e === "ER_DUP_ENTRY") {
-        return Boom.badRequest("This email is already registered");
+        message = "This email is already registered";
+        return Boom.unauthorized(message);
       } else {
         console.log(e);
       }
@@ -49,10 +50,8 @@ module.exports = {
     } catch (e) {
       let message = "An internal server error occurred";
       if (e !== undefined && (e === "EMAIL_NOT_FOUND" || e === "EMAIL_AND_PASS_NOT_MATCH")) {
-        return h.response({
-          valid: false,
-          msg: e == "EMAIL_NOT_FOUND" ? "Email address not found" : "Email address and password do not match",
-        });
+        message = e == "EMAIL_NOT_FOUND" ? "Email address not found" : "Email address and password do not match";
+        return Boom.unauthorized(message);
       } else {
         console.log(e);
       }

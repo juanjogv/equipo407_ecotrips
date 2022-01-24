@@ -4,31 +4,12 @@
       <h1 class="placesTitle">Alojamientos</h1>
     </div>
     <div class="elementsContainer justify-content-end align-items-center mt-5">
-      <div
-        v-for="(hotel, index) in hotels ? filtrarProducto.slice(0, 3) : 3"
-        :key="index"
-        class="element"
-      >
+      <div v-for="(hotel, index) in hotels ? filtrarProducto.slice(0, 4) : 4" :key="index" class="element">
         <img
           :src="hotels ? hotel.home_photo : imageLoader"
           alt=""
           class="img-fluid"
-          v-on:click="storeProduct(hotel)"
-        />
-        <p class="elementName">{{ hotels ? hotel.name : "Loading..." }}</p>
-      </div>
-      <div class="elementIsText" v-if="findByCity == ''">
-        <h3 style="font-size: 25px;width:80%;">Creemos que te podrían interesar estos hoteles</h3>
-      </div>
-      <div
-        v-for="(hotel, index) in hotels ? filtrarProducto.slice(3, 6) : 3"
-        :key="index"
-        class="element"
-      >
-        <img
-          :src="hotels ? hotel.home_photo : imageLoader"
-          alt=""
-          class="img-fluid"
+          style="border-radius: 7px"
           v-on:click="storeProduct(hotel)"
         />
         <p class="elementName">{{ hotels ? hotel.name : "Loading..." }}</p>
@@ -58,9 +39,7 @@ export default {
     ...mapState(["imageLoader"]),
     filtrarProducto() {
       if (this.findByCity === "") return this.hotels;
-      return this.hotels.filter((hotel) =>
-        hotel.city.toLowerCase().includes(this.findByCity.toLowerCase())
-      );
+      return this.hotels.filter((hotel) => hotel.city.toLowerCase().includes(this.findByCity.toLowerCase()));
     },
   },
 };

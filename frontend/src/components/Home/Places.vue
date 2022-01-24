@@ -5,17 +5,14 @@
     </div>
     <div class="elementsContainer justify-content-start align-items-center mt-5">
       <div class="elementIsText" v-if="findByCity == ''">
-        <h3 style="font-size: 25px;width:80%;">Creemos que te podrían interesar estos lugares.</h3>
+        <h3 style="font-size: 25px; width: 80%">Creemos que te podrían interesar estos lugares.</h3>
       </div>
-      <div
-        v-for="(place, index) in places ? filtrarProducto.slice(0, 6) : 6"
-        :key="index"
-        class="element"
-      >
+      <div v-for="(place, index) in places ? filtrarProducto.slice(0, 6) : 6" :key="index" class="element">
         <img
           :src="places ? place.home_photo : imageLoader"
           alt=""
           class="img-fluid"
+          style="border-radius: 15px"
           v-on:click="storeProduct(place)"
         />
         <p class="elementName">
@@ -47,58 +44,59 @@ export default {
     ...mapState(["imageLoader"]),
     filtrarProducto() {
       if (this.findByCity === "") return this.places;
-      return this.places.filter((place) =>
-        place.city.toLowerCase().includes(this.findByCity.toLowerCase())
-      );
+      return this.places.filter((place) => place.city.toLowerCase().includes(this.findByCity.toLowerCase()));
     },
   },
 };
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Condensed&display=swap");
 
 .element:hover {
-  cursor:pointer;
-  opacity:0.8;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .elementsContainer {
-  display:grid;
-  gap:15px;
+  display: grid;
+  gap: 15px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
 }
 
 .elementIsText {
-  height:100%;
+  height: 100%;
   text-align: left;
-  margin-top:6rem;
+  margin-top: 6rem;
 }
 
 .elementName {
-  font-size:17px;
+  font-family: "Cabin Condensed", sans-serif;
+  letter-spacing: 1px;
+  font-size: 17px;
   font-weight: bold;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 .placesTitle {
   font-weight: bold;
-  font-size:2.8rem;
-  margin-top:2rem;
+  font-size: 2.8rem;
+  margin-top: 2rem;
 }
 
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .elementsContainer {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .elementsContainer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media(max-width:575px) {
+@media (max-width: 575px) {
   .GlobalContainer {
     --size: 3rem;
     padding-left: var(--size);
@@ -106,10 +104,9 @@ export default {
   }
 }
 
-@media(max-width: 565px) {
+@media (max-width: 565px) {
   .elementsContainer {
     grid-template-columns: 1fr;
   }
 }
-
 </style>
