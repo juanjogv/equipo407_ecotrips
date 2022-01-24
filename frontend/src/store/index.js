@@ -9,7 +9,8 @@ export default createStore({
     productToShow: {},
     productType: null,
     imageLoader: require("../assets/loading.gif"),
-    showAuthErrRegister: false,
+    alertMessage: '',
+    alertToShow: '',
   },
   mutations: {
     addProductToShow(state, product) {
@@ -27,11 +28,13 @@ export default createStore({
     setProductType(state, productType) {
       state.productType = productType;
     },
-    setShowAuthErrRegister(state) {
-      state.showAuthErrRegister = true;
+    showAlert(state, alert) {
+      state.alertMessage = alert.message;
+      state.alertToShow = alert.alertToShow;
       setTimeout(() => {
-        state.showAuthErrRegister = false;
-      }, 2000);
+        state.alertMessage = "";
+        state.alertToShow = "";
+      }, 5000);
     },
   },
   getters: {},
@@ -56,8 +59,8 @@ export default createStore({
           .catch((error) => console.error(error));
       }, 1000);
     },
-    changeShowAuthErrRegister({ commit }) {
-      commit("setShowAuthErrRegister");
+    showAlert({ commit },alert) {
+      commit("showAlert", alert);
     },
   },
   modules: {},
