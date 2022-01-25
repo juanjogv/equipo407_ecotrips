@@ -1,12 +1,14 @@
 package functional;
 
 import auth.impl.LoginImpl;
-import org.apache.log4j.BasicConfigurator;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import util.Constants.FrontendEndpoints;
+import util.DataProvider.UserProvider;
 import util.PropertiesManager;
 import util.Utils;
+
+import java.util.Random;
 
 public class LoginTestCase {
 	private WebDriver driver;
@@ -25,7 +27,9 @@ public class LoginTestCase {
 
 	@Test
 	public void testLogin() {
-		LoginImpl login = new LoginImpl(driver);
+		Random random = new Random();
+
+		LoginImpl login = new LoginImpl(driver, UserProvider.getUser(random.nextInt(100)));
 		login.sendData();
 		Assert.assertTrue("Valida el form", login.isLoginSuccess());
 	}

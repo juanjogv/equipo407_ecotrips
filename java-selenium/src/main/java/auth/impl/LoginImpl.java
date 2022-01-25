@@ -1,4 +1,5 @@
 package auth.impl;
+
 import auth.Login;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,21 +19,22 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 public class LoginImpl implements Login {
-    private WebDriver driver;
+
+    private final WebDriver driver;
 
     private WebElement emailInput;
     private WebElement passwordInput;
     private WebElement loginButton;
 
-    private User user;
+    private final User user;
 
-    public LoginImpl(WebDriver driver) {
+    public LoginImpl(WebDriver driver, User user) {
         this.driver = driver;
+        this.user = user;
         this.setWebElements();
     }
 
     public void sendData() {
-        this.getUser();
         emailInput.sendKeys(user.getEmail());
         passwordInput.sendKeys(user.getPassword());
         loginButton.click();
@@ -45,28 +47,12 @@ public class LoginImpl implements Login {
         new WebDriverWait(driver, Duration.ofSeconds(Test.WAIT_TIME_MS))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(validatorElement)));
         String textToValidate = driver.findElement(By.xpath(validatorElement)).getText();
-        return  validator.contains(textToValidate);
+        return validator.contains(textToValidate);
     }
 
     private void setWebElements() {
         emailInput = driver.findElement(By.id("emailLogin"));
         passwordInput = driver.findElement(By.id("passwordLogin"));
         loginButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/form[1]/div/div[3]/div[1]/input"));
-    }
-
-    private void getUser() {
-        ArrayList<User> users;
-
-        Gson gson = new Gson();
-
-        Type listType = new TypeToken<ArrayList<User>>() {
-        }.getType();
-
-        try (Reader reader = new FileReader("src/main/resources/users.json")) {
-            users = gson.fromJson(reader, listType);
-            user = users.get((int) Math.floor(Math.random() * (99) + (1)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

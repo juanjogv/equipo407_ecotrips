@@ -213,7 +213,7 @@
     "email": "tspantonq@hud.gov",
     "id": "6333771442478221807",
     "password": "i0YQX61KS",
-    "isLogged": false
+    "isLogged": true
   },
   {
     "firstName": "Stacia",
@@ -448,14 +448,6 @@
     "isLogged": false
   },
   {
-    "firstName": "Malissia",
-    "lastName": "Westberg",
-    "email": "mwestberg1k@w3.org",
-    "id": "201494847481407",
-    "password": "SdOYQKKU",
-    "isLogged": false
-  },
-  {
     "firstName": "Ninnette",
     "lastName": "Peters",
     "email": "npeters1l@example.com",
@@ -685,7 +677,7 @@
     "email": "fgrosier2e@icio.us",
     "id": "3579549845400200",
     "password": "t9orpXm9",
-    "isLogged": false
+    "isLogged": true
   },
   {
     "firstName": "Maddy",
@@ -797,6 +789,14 @@
     "email": "kgwilt2j@sina.com.cn",
     "id": "3568741568088295",
     "password": "zflXyJUI",
+    "isLogged": true
+  },
+  {
+    "firstName": "Malissia",
+    "lastName": "Westberg",
+    "email": "mwestberg1k@w3.org",
+    "id": "201494847481407",
+    "password": "SdOYQKKU",
     "isLogged": true
   }
 ]

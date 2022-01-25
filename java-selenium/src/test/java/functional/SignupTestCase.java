@@ -4,8 +4,11 @@ import auth.impl.SignupImpl;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import util.Constants.FrontendEndpoints;
+import util.DataProvider.UserProvider;
 import util.PropertiesManager;
 import util.Utils;
+
+import java.util.Random;
 
 public class SignupTestCase {
 	private WebDriver driver;
@@ -24,10 +27,12 @@ public class SignupTestCase {
 
 	@Test
 	public void testMain() {
+		Random random = new Random();
 
-		SignupImpl signup = new SignupImpl(driver);
+		SignupImpl signup = new SignupImpl(driver, UserProvider.getUser(random.nextInt(100)));
 		signup.sendData();
 		Assert.assertTrue("Valida el form", signup.isSignupSuccess());
+		UserProvider.setUser();
 
 	}
 

@@ -25,7 +25,7 @@ public class Constants {
 	}
 
 	public static final class Test {
-		public static final Integer WAIT_TIME_MS = 3000;
+		public static final Integer WAIT_TIME_MS = 2000;
 	}
 
 }
