@@ -54,11 +54,11 @@ public class SignupImpl implements Signup {
 
     public boolean isSignupSuccess() {
         String validator = user.isLogged() ? "This email is already registered" : "Lugares turísticos";
-        String validatorElement = user.isLogged() ? "//*[@id=\"app\"]/div/div/div[1]/h4" : "//*[@id=\"app\"]/div/div/div/div[2]/div[1]/h1";
+        String validatorElement = user.isLogged() ? "#app > div > div > div.alert.alert-warning.d-flex.align-items-center.alert-dismissible.fade.show" : "#app > div > div > div > div.pt-4.pb-5.GlobalContainer > div:nth-child(1) > h1";
 
         new WebDriverWait(driver, Duration.ofSeconds(Test.WAIT_TIME_MS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(validatorElement)));
-        String textToValidate = driver.findElement(By.xpath(validatorElement)).getText();
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(validatorElement)));
+        String textToValidate = driver.findElement(By.cssSelector(validatorElement)).getText();
         return validator.contains(textToValidate);
     }
 
