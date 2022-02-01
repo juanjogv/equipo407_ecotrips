@@ -9,8 +9,6 @@ export default createStore({
     productToShow: {},
     productType: null,
     imageLoader: require("../assets/loading.gif"),
-    alertMessage: "",
-    alertToShow: "",
   },
   mutations: {
     addProductToShow(state, product) {
@@ -27,14 +25,6 @@ export default createStore({
     },
     setProductType(state, productType) {
       state.productType = productType;
-    },
-    showAlert(state, alert) {
-      state.alertMessage = alert.message;
-      state.alertToShow = alert.alertToShow;
-      setTimeout(() => {
-        state.alertMessage = "";
-        state.alertToShow = "";
-      }, 15000);
     },
   },
   getters: {},
@@ -58,9 +48,6 @@ export default createStore({
           .then((res) => commit("setRestaurants", res.data))
           .catch((error) => console.error(error));
       }, 1000);
-    },
-    showAlert({ commit }, alert) {
-      commit("showAlert", alert);
     },
   },
   modules: {},
