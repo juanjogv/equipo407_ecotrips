@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesManager {
-	private static Properties properties = new Properties();
+	private static final Properties properties = new Properties();
 
 	public static String getConf(String key) throws Exception {
 		String conf = "";
@@ -21,8 +21,6 @@ public class PropertiesManager {
 				} else {
 					throw new Exception("Propiedad " + key + " no se encuentra en el archivo properties");
 				}
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

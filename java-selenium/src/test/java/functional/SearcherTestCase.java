@@ -1,16 +1,13 @@
 package functional;
 
-import pageObject.auth.impl.LoginImpl;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
+import pageObject.home.impl.SearcherImpl;
 import util.Constants.FrontendEndpoints;
-import util.DataProvider.UserProvider;
 import util.PropertiesManager;
 import util.Utils;
 
-import java.util.Random;
-
-public class LoginTestCase {
+public class SearcherTestCase {
     private WebDriver driver;
 
     @BeforeClass
@@ -23,21 +20,18 @@ public class LoginTestCase {
     public void setUp() throws Exception {
         driver = Utils.setDriver();
         driver.manage().window().maximize();
-        driver.get(PropertiesManager.getConf("frontend_url") + FrontendEndpoints.AUTH);
+        driver.get(PropertiesManager.getConf("frontend_url") + FrontendEndpoints.HOME);
     }
 
     @Test
-    public void testLogin() {
-        Random random = new Random();
-
-        LoginImpl login = new LoginImpl(driver, UserProvider.getUser(random.nextInt(100)));
-        login.sendData();
-        Assert.assertTrue("Valida el form", login.isLoginSuccess());
+    public void testSearcher() {
+        SearcherImpl searcher = new SearcherImpl(driver);
+        searcher.sendData();
     }
 
     @After
     public void tearDown() {
-        driver.quit();
+        //driver.quit();
     }
 
     @AfterClass

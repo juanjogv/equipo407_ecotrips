@@ -43,10 +43,7 @@ public class Utils {
 	}
 
 	private static boolean isWindows() throws Exception {
-		if (PropertiesManager.getConf("OS").equals("linux")) {
-			return false;
-		}
-		return true;
-	}
+        return !PropertiesManager.getConf("OS").equals("linux");
+    }
 
 }

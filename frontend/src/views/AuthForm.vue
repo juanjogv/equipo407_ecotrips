@@ -1,6 +1,6 @@
 <template>
   <div class="row auth">
-    <vue-basic-alert :duration="300" :closeIn="5000" ref="alert" />
+    <vue-basic-alert :duration="300" ref="alert" />
     <div class="col-sm-auto">
       <img src="../assets/img/EcoTrips_logo/TextoLogo2.png" class="img-fluid" />
     </div>

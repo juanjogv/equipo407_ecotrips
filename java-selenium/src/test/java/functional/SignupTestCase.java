@@ -1,6 +1,6 @@
 package functional;
 
-import auth.impl.SignupImpl;
+import pageObject.auth.impl.SignupImpl;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import util.Constants.FrontendEndpoints;
@@ -22,6 +22,7 @@ public class SignupTestCase {
 	@Before
 	public void setUp() throws Exception {
 		driver = Utils.setDriver();
+		driver.manage().window().maximize();
 		driver.get(PropertiesManager.getConf("frontend_url") + FrontendEndpoints.AUTH);
 	}
 
