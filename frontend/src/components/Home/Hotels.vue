@@ -20,7 +20,48 @@
         <h1 class="placesTitle">Alojamientos</h1>
       </div>
       <div class="elementsContainer justify-content-end align-items-center">
-        <div v-for="(hotel, index) in hotels ? filtrarProducto.slice(start, final) : 4" :key="index" class="element">
+        <div class="element">
+          <img
+              :src="hotels ? filtrarProducto[elements[0]].home_photo : imageLoader"
+              alt=""
+              class="img-fluid"
+              style="border-radius: 7px;"
+              v-on:click="storeProduct(hotel)"
+            />
+          <p class="elementName">{{ hotels ? filtrarProducto[elements[1]].name : "Loading..." }}</p>
+        </div>
+        <div class="element">
+          <img
+              :src="hotels ? filtrarProducto[elements[1]].home_photo : imageLoader"
+              alt=""
+              class="img-fluid"
+              style="border-radius: 7px;"
+              v-on:click="storeProduct(hotel)"
+            />
+          <p class="elementName">{{ hotels ? filtrarProducto[elements[2]].name : "Loading..." }}</p>
+        </div>
+        <div class="element">
+          <img
+              :src="hotels ? filtrarProducto[elements[2]].home_photo : imageLoader"
+              alt=""
+              class="img-fluid"
+              style="border-radius: 7px;"
+              v-on:click="storeProduct(hotel)"
+            />
+          <p class="elementName">{{ hotels ? filtrarProducto[elements[3]].name : "Loading..." }}</p>
+        </div>
+        <div class="element">
+          <img
+              :src="hotels ? filtrarProducto[elements[3]].home_photo : imageLoader"
+              alt=""
+              class="img-fluid"
+              style="border-radius: 7px;"
+              v-on:click="storeProduct(hotel)"
+            />
+          <p class="elementName">{{ hotels ? filtrarProducto[elements[3]].name : "Loading..." }}</p>
+        </div>
+
+        <!-- <div v-for="(hotel, index) in hotels ? filtrarProducto.slice(start, final) : 4" :key="index" class="element">
           <img
             :src="hotels ? hotel.home_photo : imageLoader"
             alt=""
@@ -29,7 +70,7 @@
             v-on:click="storeProduct(hotel)"
           />
           <p class="elementName">{{ hotels ? hotel.name : "Loading..." }}</p>
-        </div>
+        </div> -->
       </div>
     </div>
     <div>
@@ -58,8 +99,7 @@ export default {
   props: ["hotels", "findByCity"],
   data() {
     return {
-      start : 0,
-      final : 4
+      elements : [0, 1, 2, 3],
     };
   },
   mounted() {},
@@ -69,11 +109,32 @@ export default {
       this.$store.commit("setProductType", "hotel");
       router.push("/product");
     },
-    clickArrow(option){
-      if(option == 1){
-        alert('left')
+    calcPositionOfArray(option, value1){
+      if(option === 1){
+        if((value1 - 4) < 0){
+          return (this.filtrarProducto.length + ((value1 - 4)));
+        }
+        return value1 - 4;
       } else {
-        alert('right')
+        if((value1 + 4) >= this.filtrarProducto.length){
+          console.log(this.filtrarProducto.length - ((value1 + 4)))
+          return Math.abs(this.filtrarProducto.length - ((value1 + 4)));
+        }
+        return value1 + 4;
+      }
+    },
+    clickArrow(option){
+      if(option === 1){
+        //this.elements[0] = this.elements[0] - this.elements[0];
+        this.elements[0] = this.calcPositionOfArray(option, this.elements[0]);
+        this.elements[1] = this.calcPositionOfArray(option, this.elements[1]);
+        this.elements[2] = this.calcPositionOfArray(option, this.elements[2]);
+        this.elements[3] = this.calcPositionOfArray(option, this.elements[3]);
+      } else {
+        this.elements[0] = this.calcPositionOfArray(option, this.elements[0]);
+        this.elements[1] = this.calcPositionOfArray(option, this.elements[1]);
+        this.elements[2] = this.calcPositionOfArray(option, this.elements[2]);
+        this.elements[3] = this.calcPositionOfArray(option, this.elements[3]);
       }
     }
   },
