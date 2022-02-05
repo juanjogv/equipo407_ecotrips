@@ -9,6 +9,8 @@ import pageObject.home.Searcher;
 import util.Constants;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearcherImpl implements Searcher {
 
@@ -16,9 +18,12 @@ public class SearcherImpl implements Searcher {
 
     private WebElement homeSearcher;
 
+    private List<String> touristicPlaces;
+
     public SearcherImpl(WebDriver driver) {
         this.driver = driver;
         this.setWebElements();
+        touristicPlaces = new ArrayList<>();
     }
 
     @Override
@@ -32,8 +37,10 @@ public class SearcherImpl implements Searcher {
         String placeText = "Plaza Botero";
         new WebDriverWait(driver, Duration.ofSeconds(Constants.Test.WAIT_TIME_MS))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#app > div > div > div > div.pt-4.pb-5.GlobalContainer > div.elementsContainer.justify-content-start.align-items-center.mt-5 > div:nth-child(1) > p")));
-        String validatePlaceText = driver.findElement(By.cssSelector("#app > div > div > div > div.pt-4.pb-5.GlobalContainer > div.elementsContainer.justify-content-start.align-items-center.mt-5 > div:nth-child(1) > p")).getText();
-        return placeText.contains(validatePlaceText);
+
+        driver.findElements(By.className("placesText")).forEach(e->{touristicPlaces.add(e.getText());});
+
+        return touristicPlaces.contains(placeText);
     }
     private void setWebElements() {
         homeSearcher = driver.findElement(By.tagName("input"));
