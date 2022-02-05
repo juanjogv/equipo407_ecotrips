@@ -27,6 +27,7 @@ public class SearcherTestCase {
     public void testSearcher() {
         SearcherImpl searcher = new SearcherImpl(driver);
         searcher.sendData();
+        Assert.assertTrue("Validando texto del lugar turístico", searcher.isSearcherSuccess());
     }
 
     @After
