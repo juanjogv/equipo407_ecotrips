@@ -104,7 +104,7 @@ export default {
 
 @media (max-width: 575px) {
   .mainSearcher form {
-    width: 90%;
+    width: 90%
   }
 }
 </style>
