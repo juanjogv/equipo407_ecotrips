@@ -1,49 +1,77 @@
-package pageObject.home.impl;
+package pageobject.home.impl;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObject.home.Searcher;
-import util.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
+import pageobject.home.Searcher;
+import util.ConnectionManager;
+import util.PropertiesManager;
 
 public class SearcherImpl implements Searcher {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SearcherImpl.class);
+
     private final WebDriver driver;
+
+    private final List<String> expectedProducts;
 
     private WebElement homeSearcher;
 
-    private List<String> touristicPlaces;
+    private final List<String> products;
 
     public SearcherImpl(WebDriver driver) {
         this.driver = driver;
+        this.products = new ArrayList<>();
+        this.expectedProducts = new ArrayList<>();
         this.setWebElements();
-        touristicPlaces = new ArrayList<>();
+    }
+
+    @Override
+    public boolean isSearcherSuccess() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElements(By.className("elementName")).forEach(element -> products.add(element.getText()));
+
+        this.getExpectedData();
+
+        return !products.isEmpty() && expectedProducts.containsAll(products);
     }
 
     @Override
     public void sendData() {
-        new WebDriverWait(driver, Duration.ofSeconds(Constants.Test.WAIT_TIME_MS));
         homeSearcher.sendKeys("Medellín");
     }
 
-    @Override
-    public boolean isSearcherSuccess(){
-        String placeText = "Plaza Botero";
-        new WebDriverWait(driver, Duration.ofSeconds(Constants.Test.WAIT_TIME_MS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#app > div > div > div > div.pt-4.pb-5.GlobalContainer > div.elementsContainer.justify-content-start.align-items-center.mt-5 > div:nth-child(1) > p")));
+    private void getExpectedData() {
+        Connection conn = ConnectionManager.getConnection();
+        String query = PropertiesManager.getSql("searcher.products");
 
-        driver.findElements(By.className("placesText")).forEach(e->{touristicPlaces.add(e.getText());});
+        try (Statement stmt = conn.createStatement()) {
+            //(PreparedStatement pstmt = conn.prepareStatement(query))
+            //pstmt.setString(1, "Medellín");
 
-        return touristicPlaces.contains(placeText);
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                expectedProducts.add(rs.getString("products"));
+            }
+
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
     }
+
     private void setWebElements() {
         homeSearcher = driver.findElement(By.tagName("input"));
     }
-
 }

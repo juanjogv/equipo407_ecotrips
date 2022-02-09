@@ -1,4 +1,4 @@
-package pageObject.auth;
+package pageobject.auth;
 
 public interface Login {
     void sendData();

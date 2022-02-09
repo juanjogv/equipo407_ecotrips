@@ -2,7 +2,7 @@ package functional;
 
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
-import pageObject.home.impl.SearcherImpl;
+import pageobject.home.impl.SearcherImpl;
 import util.Constants.FrontendEndpoints;
 import util.PropertiesManager;
 import util.Utils;
@@ -32,7 +32,7 @@ public class SearcherTestCase {
 
     @After
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 
     @AfterClass

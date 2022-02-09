@@ -1,4 +1,4 @@
-package pageObject.home;
+package pageobject.home;
 
 public interface Searcher {
     void sendData();

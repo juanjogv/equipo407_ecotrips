@@ -1,7 +1,7 @@
-package pageObject.auth.impl;
+package pageobject.auth.impl;
 
 
-import pageObject.auth.Signup;
+import pageobject.auth.Signup;
 
 import dto.User;
 import org.openqa.selenium.By;

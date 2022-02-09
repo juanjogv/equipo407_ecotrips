@@ -1,6 +1,6 @@
 package functional;
 
-import pageObject.auth.impl.LoginImpl;
+import pageobject.auth.impl.LoginImpl;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import util.Constants.FrontendEndpoints;

@@ -1,4 +1,4 @@
-package pageObject.auth.impl;
+package pageobject.auth.impl;
 
 import dto.User;
 import org.openqa.selenium.By;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObject.auth.Login;
+import pageobject.auth.Login;
 import util.Constants.Test;
 
 import java.time.Duration;

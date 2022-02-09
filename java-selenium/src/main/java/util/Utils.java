@@ -5,9 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import util.Constants.Browsers;
 import util.Constants.Drivers;
-import util.Constants.DriversPath;
+import util.Constants.PC;
 
 public class Utils {
+
+	private Utils() {
+	}
 
 	public static String getTipoDriver() throws Exception {
 		String value = PropertiesManager.getConf("BrowserDriver");
@@ -23,11 +26,11 @@ public class Utils {
 	public static String getDriverPath() throws Exception {
 		String value = PropertiesManager.getConf("BrowserDriver");
 		if (Browsers.CHROME.contains(value)) {
-			return isWindows() ? (DriversPath.CHROME + ".exe") : DriversPath.CHROME;
+			return isWindows() ? (Drivers.CHROME_PATH + ".exe") : Drivers.CHROME_PATH;
 		} else if (Browsers.EDGE.contains(value)) {
-			return isWindows() ? (DriversPath.EDGE + ".exe") : DriversPath.CHROME;
+			return isWindows() ? (Drivers.EDGE_PATH + ".exe") : Drivers.EDGE_PATH;
 		} else {
-			return Drivers.CHROME;
+			return isWindows() ? (Drivers.CHROME_PATH + ".exe") : Drivers.CHROME_PATH;
 		}
 	}
 
@@ -42,8 +45,8 @@ public class Utils {
 		}
 	}
 
-	private static boolean isWindows() throws Exception {
-        return !PropertiesManager.getConf("OS").equals("linux");
-    }
+	private static boolean isWindows(){
+		return !PC.OPERATING_SYSTEM.contains("Linux");
+	}
 
 }
