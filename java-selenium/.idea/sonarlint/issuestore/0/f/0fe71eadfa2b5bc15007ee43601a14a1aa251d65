@@ -1,0 +1,12 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Œ—òö
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(à‹”‚øÿÿÿÿ
+[	java:S112%"FDefine and throw a dedicated exception instead of using a generic one.(­Ûê¹
+‚
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Œ—òö
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(à‹”‚øÿÿÿÿ
+‚
+java:S1130%"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(­Ûê¹
+d
+java:S1192"NDefine a constant instead of duplicating this literal "BrowserDriver" 3 times.(í‰§Ò
