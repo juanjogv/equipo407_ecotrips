@@ -10,8 +10,15 @@
           </form>
         </div>
       </div>
+    </div>
+    <div class="container">
+      <SuccessAlert v-if="alertToShow == 'success'">{{ alertMessage }}</SuccessAlert>
+    </div>
+    <div class="container">
       <Places :places="places" :findByCity="findByCity" />
-      <Hotels :hotels="hotels" :findByCity="findByCity" />
+    </div>
+    <Hotels :hotels="hotels" :findByCity="findByCity" />
+    <div class="container">
       <Restaurants :restaurants="restaurants" :findByCity="findByCity" />
     </div>
   </div>

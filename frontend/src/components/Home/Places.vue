@@ -84,6 +84,12 @@ export default {
   margin-top: 2rem;
 }
 
+.element:hover {
+  color: black;
+  opacity: 0.6;
+  transition: 800ms;
+}
+
 @media (max-width: 991px) {
   .elementsContainer {
     grid-template-columns: repeat(3, 1fr);

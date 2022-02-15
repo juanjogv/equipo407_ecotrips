@@ -76,4 +76,10 @@ export default {
   font-size: 2.8rem;
   margin-top: 2rem;
 }
+
+.element:hover {
+  color: black;
+  opacity: 0.6;
+  transition: 800ms;
+}
 </style>
