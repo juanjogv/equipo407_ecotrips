@@ -6,14 +6,8 @@ services:
       context: ./frontend
     ports:
       - "80:80"
-    networks:
-      network:
-        ipv4_address: 172.18.0.11
   nodeserver:
     build:
       context: ./backend
     ports:
       - "3000:3000"
-    networks:
-      network:
-        ipv4_address: 172.18.0.12
