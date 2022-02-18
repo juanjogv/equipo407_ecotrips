@@ -1,47 +1,64 @@
 <template>
   <div class="row auth">
-    <DangerAlert v-if="alertToShow == 'danger'">{{ alertMessage }}</DangerAlert>
-    <WarningAlert v-if="alertToShow == 'warning'">{{ alertMessage }}</WarningAlert>
+    <vue-basic-alert :duration="300" ref="alert" />
     <div class="col-sm-auto">
       <img src="../assets/img/EcoTrips_logo/TextoLogo2.png" class="img-fluid" />
     </div>
     <div class="col-sm-auto">
-      <Login v-show="login" :method="changeVisibility" />
-      <Signin v-show="signin" :method="changeVisibility" />
+      <form>
+        <Login v-model:user-entity="userEntity" @submit="onSubmitForm" @changeVisibility="onChangeVisibility" v-show="login" />
+        <Signin v-model:user-entity="userEntity" @submit="onSubmitForm" @changeVisibility="onChangeVisibility" v-show="signin" />
+      </form>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+import router from "@/router/index";
 import Login from "@/components/Auth/LoginForm";
 import Signin from "@/components/Auth/SigninForm";
-import DangerAlert from "@/components/Alerts/DangerAlert";
-import WarningAlert from "@/components/Alerts/WarningAlert";
-import router from "@/router/index";
 import { mapState } from "vuex";
 export default {
   name: "AuthForm",
-  beforeCreate() {
-    if (localStorage.getItem("user_email")) {
-      router.push("/home");
-    }
-  },
-  components: {
-    Login,
-    Signin,
-    DangerAlert,
-    WarningAlert,
-  },
   data() {
     return {
+      userEntity: {},
       login: true,
       signin: false,
     };
   },
+  components: {
+    Login,
+    Signin,
+  },
   methods: {
-    changeVisibility() {
+    onSubmitForm() {
+      axios
+        .post(`${process.env.VUE_APP_BACKEND_URL}/${this.login ? "login" : "signin"}`, this.userEntity)
+        .then((res) => {
+          if (res.data.valid) {
+            localStorage.setItem("user_email", this.userEntity.user_email);
+            router.push("/home");
+          }
+        })
+        .catch((err) => {
+          this.$refs.alert.showAlert("warning", err.response.data.message, "", {
+            iconSize: 35,
+            iconType: "solid",
+            position: "top right",
+          });
+        });
+    },
+    showAlert() {},
+    onChangeVisibility() {
       this.login = !this.login;
       this.signin = !this.signin;
     },
+  },
+  beforeCreate() {
+    if (localStorage.getItem("user_email")) {
+      router.push("/home");
+    }
   },
   computed: mapState(["alertMessage", "alertToShow"]),
 };

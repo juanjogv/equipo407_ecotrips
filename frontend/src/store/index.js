@@ -9,8 +9,6 @@ export default createStore({
     productToShow: {},
     productType: null,
     imageLoader: require("../assets/loading.gif"),
-    alertMessage: '',
-    alertToShow: '',
   },
   mutations: {
     addProductToShow(state, product) {
@@ -28,39 +26,24 @@ export default createStore({
     setProductType(state, productType) {
       state.productType = productType;
     },
-    showAlert(state, alert) {
-      state.alertMessage = alert.message;
-      state.alertToShow = alert.alertToShow;
-      setTimeout(() => {
-        state.alertMessage = "";
-        state.alertToShow = "";
-      }, 5000);
-    },
   },
   getters: {},
   actions: {
     loadProducts({ commit }) {
-      setTimeout(() => {
-        axios
-          .get(`${process.env.VUE_APP_BACKEND_URL}/home/touristic_places`)
-          .then((res) => commit("setPlaces", res.data))
-          .catch((error) => console.error(error));
-      }, 1000);
-      setTimeout(() => {
-        axios
-          .get(`${process.env.VUE_APP_BACKEND_URL}/home/hotels`)
-          .then((res) => commit("setHotels", res.data))
-          .catch((error) => console.error(error));
-      }, 1000);
-      setTimeout(() => {
-        axios
-          .get(`${process.env.VUE_APP_BACKEND_URL}/home/restaurants`)
-          .then((res) => commit("setRestaurants", res.data))
-          .catch((error) => console.error(error));
-      }, 1000);
-    },
-    showAlert({ commit },alert) {
-      commit("showAlert", alert);
+      axios
+        .get(`${process.env.VUE_APP_BACKEND_URL}/home/touristic_places`)
+        .then((res) => commit("setPlaces", res.data))
+        .catch((error) => console.error(error));
+
+      axios
+        .get(`${process.env.VUE_APP_BACKEND_URL}/home/hotels`)
+        .then((res) => commit("setHotels", res.data))
+        .catch((error) => console.error(error));
+
+      axios
+        .get(`${process.env.VUE_APP_BACKEND_URL}/home/restaurants`)
+        .then((res) => commit("setRestaurants", res.data))
+        .catch((error) => console.error(error));
     },
   },
   modules: {},

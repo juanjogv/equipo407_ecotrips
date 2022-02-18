@@ -10,11 +10,6 @@
           </form>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <SuccessAlert v-if="alertToShow == 'success'">{{ alertMessage }}</SuccessAlert>
-    </div>
-    <div class="container">
       <Places :places="places" :findByCity="findByCity" />
     </div>
     <Hotels :hotels="hotels" :findByCity="findByCity" />
@@ -28,7 +23,6 @@ import NavBar from "@/components/NavBar";
 import Places from "@/components/Home/Places";
 import Restaurants from "@/components/Home/Restaurants";
 import Hotels from "@/components/Home/Hotels";
-import SuccessAlert from "@/components/Alerts/SuccessAlert";
 import { mapState } from "vuex";
 export default {
   name: "Home",
@@ -37,7 +31,6 @@ export default {
     Places,
     Hotels,
     Restaurants,
-    SuccessAlert,
   },
   data() {
     return {
@@ -104,7 +97,7 @@ export default {
 
 @media (max-width: 575px) {
   .mainSearcher form {
-    width: 90%
+    width: 90%;
   }
 }
 </style>

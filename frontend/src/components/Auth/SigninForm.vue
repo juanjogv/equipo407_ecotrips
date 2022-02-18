@@ -1,142 +1,104 @@
 <template>
-  <form>
-    <div class="form-inner">
-      <h2>Registrarse</h2>
-      <div class="form-group">
-        <label htmlFor="name">Nombre:</label>
-        <input ref="name" type="text" name="first-name" id="first-name" v-model="user_first_name" />
+  <div class="form-inner">
+    <vue-basic-alert :duration="300" :closeIn="5000" ref="alert" />
+    <h2>Registrarse</h2>
+    <div class="form-group">
+      <label htmlFor="name">Nombre:</label>
+      <input
+        ref="name"
+        type="text"
+        name="first-name"
+        id="first-name"
+        v-model="signinUserEntity.user_first_name"
+        @input="updateUserEntity"
+      />
+    </div>
+    <div class="form-group">
+      <label htmlFor="name">Apellido:</label>
+      <input
+        ref="lastname"
+        type="text"
+        name="last-name"
+        id="last-name"
+        v-model="signinUserEntity.user_last_name"
+        @input="updateUserEntity"
+      />
+    </div>
+    <div class="form-group">
+      <label htmlFor="name">Documento de Identidad:</label>
+      <input ref="id" type="text" name="idUser" id="idUser" v-model="signinUserEntity.user_id" @input="updateUserEntity" />
+    </div>
+    <div class="form-group">
+      <label htmlFor="email">Correo electrónico:</label>
+      <input ref="email" type="email" name="email" id="emailSignin" v-model="signinUserEntity.user_email" @input="updateUserEntity" />
+    </div>
+    <div class="form-group">
+      <label htmlFor="password">Contraseña:</label>
+      <input
+        type="password"
+        ref="password"
+        name="password"
+        id="passwordSignin"
+        v-model="signinUserEntity.user_password"
+        @input="updateUserEntity"
+      />
+    </div>
+    <div class="row">
+      <div class="col botonIzq">
+        <input type="submit" value="Registrarse" @click.prevent="submitUserEntity" />
       </div>
-      <div class="form-group">
-        <label htmlFor="name">Apellido:</label>
-        <input ref="lastname" type="text" name="last-name" id="last-name" v-model="user_last_name" />
-      </div>
-      <div class="form-group">
-        <label htmlFor="name">Documento de Identidad:</label>
-        <input ref="id" type="text" name="idUser" id="idUser" v-model="user_id" />
-      </div>
-      <div class="form-group">
-        <label htmlFor="email">Correo electrónico:</label>
-        <input ref="email" type="email" name="email" id="emailSignin" v-model="user_email" />
-      </div>
-      <div class="form-group">
-        <label htmlFor="password">Contraseña:</label>
-        <input type="password" ref="password" name="password" id="passwordSignin" v-model="user_password" />
-      </div>
-      <div class="row">
-        <div class="col botonIzq">
-          <input type="submit" value="Registrarse" @click.prevent="submit" />
-        </div>
-        <div class="col botonDer">
-          <input type="button" value="Iniciar Sesión" @click="changeVisibility" />
-        </div>
+      <div class="col botonDer">
+        <input type="button" value="Iniciar Sesión" @click="changeVisibility" />
       </div>
     </div>
-  </form>
+  </div>
 </template>
 <script>
-import axios from "axios";
-import router from "@/router/index";
-import { mapActions } from "vuex";
 export default {
+  name: "SigninForm",
+  data() {
+    return {
+      signinUserEntity: {
+        user_first_name: "",
+        user_last_name: "",
+        user_id: "",
+        user_email: "",
+        user_password: "",
+      },
+    };
+  },
   props: {
     method: { type: Function },
   },
-  data() {
-    return {
-      user_first_name: "",
-      user_last_name: "",
-      user_id: "",
-      user_email: "",
-      user_password: "",
-    };
-  },
-  watch: {
-    user_first_name: function () {
-      if (this.$refs.name.classList !== "") {
-        this.$refs.name.classList = "";
-      }
-    },
-    user_last_name: function () {
-      if (this.$refs.lastname.classList !== "") {
-        this.$refs.lastname.classList = "";
-      }
-    },
-    user_id: function () {
-      if (this.$refs.id.classList !== "") {
-        this.$refs.id.classList = "";
-      }
-    },
-    user_email: function () {
-      if (this.$refs.email.classList !== "") {
-        this.$refs.email.classList = "";
-      }
-    },
-    user_password: function () {
-      if (this.$refs.password.classList !== "") {
-        this.$refs.password.classList = "";
-      }
-    },
-  },
+  emits: ["update:userEntity", "submit", "changeVisibility"],
+  components: {},
   methods: {
-    ...mapActions(["changeShowAuthErrRegister"]),
-    handleChangeValidatingInformation() {
-      console.log("e");
+    updateUserEntity() {
+      this.$emit("update:userEntity", this.signinUserEntity);
     },
-    //method for validate information
-    verification() {
-      let sw = true;
-      if (this.user_first_name === "") {
-        this.$refs.name.classList = "error_no_write";
-        sw = false;
-      }
-      if (this.user_last_name === "") {
-        this.$refs.lastname.classList = "error_no_write";
-        sw = false;
-      }
-      if (this.user_id === "") {
-        this.$refs.id.classList = "error_no_write";
-        sw = false;
-      }
-      if (this.user_email === "") {
-        this.$refs.email.classList = "error_no_write";
-        sw = false;
-      }
-      if (this.user_password === "") {
-        this.$refs.password.classList = "error_no_write";
-        sw = false;
-      }
-      return sw;
-    },
-    submit() {
-      if (this.verification()) {
-        let newUser = {
-          user_first_name: this.user_first_name,
-          user_last_name: this.user_last_name,
-          user_id: this.user_id,
-          user_email: this.user_email,
-          user_password: this.user_password,
-        };
-        axios
-          .post(`${process.env.VUE_APP_BACKEND_URL}/signin`, newUser)
-          .then((res) => {
-            if (res.data.valid) {
-              localStorage.setItem("user_email", this.user_email);
-              let alert = { message: "Se te ha registrado correctamente", alertToShow: "success" };
-              this.$store.dispatch("showAlert", alert);
-              router.push("/home");
-            }
-          })
-          .catch((err) => {
-            let alert = { message: err.response.data.message, alertToShow: "warning" };
-            this.$store.dispatch("showAlert", alert);
-          });
-      } else {
-        let alert = { message: "Llene todos los campos", alertToShow: "danger" };
-        this.$store.dispatch("showAlert", alert);
-      }
+    submitUserEntity() {
+      if (this.verification()) this.$emit("submit");
     },
     changeVisibility() {
-      this.method();
+      this.$emit("changeVisibility");
+    },
+    verification() {
+      let { user_first_name, user_last_name, user_id, user_email, user_password } = this.signinUserEntity;
+
+      if (user_first_name == "" || user_last_name == "" || user_id == "" || user_email == "" || user_password == "") {
+        this.$refs.alert.showAlert(
+          "warning",
+          "Llene todo el formulario para poder seguir con el proceso de registro.",
+          "Formulario incompleto",
+          {
+            iconSize: 35,
+            iconType: "solid",
+            position: "top right",
+          }
+        );
+        return false;
+      }
+      return true;
     },
   },
 };

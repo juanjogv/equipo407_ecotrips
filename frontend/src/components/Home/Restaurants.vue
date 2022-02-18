@@ -12,7 +12,7 @@
         <img
           :src="restaurants ? restaurant.home_photo : imageLoader"
           alt=""
-          style="width: 100%; border-radius:7px"
+          style="width: 100%; border-radius: 7px"
           class="img-fluid"
           v-on:click="storeProduct(restaurant)"
         />
@@ -28,7 +28,7 @@
         <img
           :src="restaurants ? restaurant.home_photo : imageLoader"
           alt=""
-          style="width: 100%; border-radius:7px;"
+          style="width: 100%; border-radius: 7px"
           class="img-fluid"
           v-on:click="storeProduct(restaurant)"
         />
@@ -57,7 +57,7 @@ export default {
   computed: {
     ...mapState(["imageLoader"]),
     filtrarProducto() {
-      if (this.findByCity === "") return this.restaurants;
+      if (this.findByCity === "" || !this.restaurants) return this.restaurants;
       return this.restaurants.filter((restaurant) => restaurant.city.toLowerCase().includes(this.findByCity.toLowerCase()));
     },
   },

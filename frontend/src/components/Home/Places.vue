@@ -43,7 +43,7 @@ export default {
   computed: {
     ...mapState(["imageLoader"]),
     filtrarProducto() {
-      if (this.findByCity === "") return this.places;
+      if (this.findByCity === "" || !this.places) return this.places;
       return this.places.filter((place) => place.city.toLowerCase().includes(this.findByCity.toLowerCase()));
     },
   },

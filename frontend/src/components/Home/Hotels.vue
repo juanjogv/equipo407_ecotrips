@@ -141,7 +141,7 @@ export default {
   computed: {
     ...mapState(["imageLoader"]),
     filtrarProducto() {
-      if (this.findByCity === "") return this.hotels;
+      if (this.findByCity === "" || !this.hotels) return this.hotels;
       return this.hotels.filter((hotel) => hotel.city.toLowerCase().includes(this.findByCity.toLowerCase()));
     },
   },
