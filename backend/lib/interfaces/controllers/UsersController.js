@@ -13,10 +13,10 @@ module.exports = {
     // Context
     const serviceLocator = request.server.app.serviceLocator;
 
-    // Input
-    const { user_first_name, user_last_name, user_id, user_email, user_password } = request.payload;
-
     try {
+      // Input
+      const { user_first_name, user_last_name, user_id, user_email, user_password } = request.payload;
+
       // Treatment
       await SignInUser(user_first_name, user_last_name, user_id, user_email, user_password, serviceLocator);
 
